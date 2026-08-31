@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#ff176f">
+<meta name="description" content="GL Graphy - Thai GL Quiz">
 <title>GL Graphy 💗</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -89,6 +92,7 @@ body::after{
     from{
         transform:translate(0,0) scale(1);
     }
+
     to{
         transform:translate(80px,60px) scale(1.25);
     }
@@ -123,6 +127,7 @@ header{
 
     -webkit-background-clip:text;
     background-clip:text;
+
     color:transparent;
 
     animation:
@@ -770,11 +775,13 @@ footer{
         transition-duration:.01ms !important;
     }
 }
+
 </style>
 </head>
 
 
 <body>
+
 
 <div
     class="confetti-container"
@@ -783,6 +790,7 @@ footer{
 
 
 <div class="app">
+
 
 <header>
 
@@ -867,7 +875,7 @@ footer{
         <div class="question-count">
 
             <span id="questionCounter">
-                Question 1 / 25
+                Question 1 / 26
             </span>
 
         </div>
@@ -971,6 +979,7 @@ footer{
 
 </section>
 
+
 </main>
 
 
@@ -978,467 +987,337 @@ footer{
     GL Graphy 💗
 </footer>
 
+
 </div>
 
 
 <script>
+
 "use strict";
 
 
 /* =====================================================
-   GL GRAPHY
-   SINGLE FILE QUIZ
-   =====================================================
+   GL GRAPHY QUIZ
+   TOTAL QUESTIONS = 26
 
-   تعداد سؤال‌ها: 25
-
-   پاسخ صحیح مستقیماً به صورت answer: 0 یا 1
-   در داده‌های سؤال ذخیره نشده است.
+   پاسخ صحیح مستقیماً به صورت answer: 0/1
+   ذخیره نشده و با Hash بررسی می‌شود.
 
    توجه:
-   چون این پروژه کاملاً Client-Side است،
-   هیچ روش Client-Side نمی‌تواند 100٪ ضد هک باشد.
-*/
+   این پروژه کاملاً Client-Side است.
+   بنابراین هیچ Client-Side Quiz ای 100٪ ضد هک نیست.
+===================================================== */
 
 
 /* =====================================================
    QUESTIONS
-   ===================================================== */
+===================================================== */
 
 const questions = [
 
 {
     number:"¹",
-
-    text:
-    "سه بازیگر جی ال ببر که دورگه باشن(یعنی بجز رگ تایلندی یک رگ دیگه هم داشته باشن)",
-
+    text:"سه بازیگر جی ال ببر که دورگه باشن(یعنی بجز رگ تایلندی یک رگ دیگه هم داشته باشن)",
     options:[
         "جینا و سونیا شارلوت فای دورگه زیاد داریم.....",
         "فقط فرین و بکی",
         "فقط انگفا و شارلوت",
         "فقط لینگ لینگ و اورم"
     ],
-
     answerHash:"3ff409"
 },
 
-
 {
     number:"²",
-
-    text:
-    "دو بازیگر جی ال نام ببرین که زیر سن 20 سالگی سریال بازی کردن؟؟",
-
+    text:"دو بازیگر جی ال نام ببرین که زیر سن 20 سالگی سریال بازی کردن؟؟",
     options:[
         "پنگجی جینا",
         "فرین بکی",
         "انگفا شارلوت",
         "فای یوکو"
     ],
-
     answerHash:"e732eb"
 },
 
-
 {
     number:"³",
-
-    text:
-    "کاپل انگفا شارلوت تا الان  چند تا سریال کاپلی بازی کردن؟؟",
-
+    text:"کاپل انگفا شارلوت تا الان  چند تا سریال کاپلی بازی کردن؟؟",
     options:[
         "دوتا",
         "سه‌تا",
         "چهارتا",
         "شش‌تا"
     ],
-
     answerHash:"3d8153"
 },
 
-
 {
     number:"⁴",
-
-    text:
-    "دلیل جدایی فای و یوکو چی بود؟؟",
-
+    text:"دلیل جدایی فای و یوکو چی بود؟؟",
     options:[
         "بخاطر اینکه یوکو فای ایگنور کرد و از کمپانی بیرون نیومد و جواب فای رو نداد چنین چیزی شبیه همین",
         "به دلیل تغییر کشور محل زندگی",
         "به دلیل پایان فیلمبرداری یک سریال",
         "به دلیل اختلاف در انتخاب نقش"
     ],
-
     answerHash:"5fad8a"
 },
 
-
 {
     number:"⁵",
-
-    text:
-    "اسم دو کارکتر نقش اصلی سریال گپ رو نام ببر؟؟",
-
+    text:"اسم دو کارکتر نقش اصلی سریال گپ رو نام ببر؟؟",
     options:[
         "فرین بکی",
         "انگفا شارلوت",
         "فای یوکو",
         "نامتان فیلم"
     ],
-
     answerHash:"97373d"
 },
 
-
 {
     number:"⁶",
-
-    text:
-    "کدوم سریال از کاپل فرین بکی هست که داره تاریخ ساخت عقب میوفته اسم سریال رو بگو؟؟",
-
+    text:"کدوم سریال از کاپل فرین بکی هست که داره تاریخ ساخت عقب میوفته اسم سریال رو بگو؟؟",
     options:[
         "کرانیوم",
         "گل‌های آبی",
         "Pluto",
         "GAP"
     ],
-
     answerHash:"ebe06d"
 },
 
-
 {
     number:"⁷",
-
-    text:
-    "کدام از بازیگرا ها کمپانی خودشون رو راه اندازی کردن دو تا نام ببر؟؟",
-
+    text:"کدام از بازیگرا ها کمپانی خودشون رو راه اندازی کردن دو تا نام ببر؟؟",
     options:[
         "فرین / بکی/ فی و می/ فای...",
         "فقط انگفا",
         "فقط شارلوت",
         "فقط نامتان"
     ],
-
     answerHash:"1bc1d1"
 },
 
-
 {
     number:"⁸",
-
-    text:
-    "یک بازیگر جی ال نام ببر که توی میس گرند هم نقش ایفا کرده؟؟",
-
+    text:"یک بازیگر جی ال نام ببر که توی میس گرند هم نقش ایفا کرده؟؟",
     options:[
         "انگفا",
         "بکی",
         "لینگ لینگ",
         "جینا"
     ],
-
     answerHash:"64114d"
 },
 
-
 {
     number:"⁹",
-
-    text:
-    "در حال حاضر کدوم از کاپل جی ال هست که به طور رسمی باهم تو رابطه هستن نام ببر؟؟",
-
+    text:"در حال حاضر کدوم از کاپل جی ال هست که به طور رسمی باهم تو رابطه هستن نام ببر؟؟",
     options:[
         "نامتان فیلم",
         "فرین بکی",
         "انگفا شارلوت",
         "فای یوکو"
     ],
-
     answerHash:"a087f1"
 },
 
-
 {
     number:"10",
-
-    text:
-    "اسم دوتا بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
-
+    text:"اسم دوتا بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
     options:[
         "فای / آیس/ لنا/ لینگ لینگ / فرین",
         "فقط بکی و جینا",
         "فقط پنگجی و جینا",
         "فقط شارلوت و بکی"
     ],
-
     answerHash:"5ecadb"
 },
 
-
 {
     number:"¹¹",
-
-    text:
-    "یک سریال جی ال رو نام ببرین که بیشترین قسمت رو داشته؟؟",
-
+    text:"یک سریال جی ال رو نام ببرین که بیشترین قسمت رو داشته؟؟",
     options:[
         "رویال پین",
         "GAP",
         "Pluto",
         "Uranus 2324"
     ],
-
     answerHash:"b18abd"
 },
 
-
 {
     number:"¹²",
-
-    text:
-    "چند تا بازیگر جی ال نام ببرید که در سریالش سیگار کشیدن؟؟(دو یا سه مورد کافیه)",
-
+    text:"چند تا بازیگر جی ال نام ببرید که در سریالش سیگار کشیدن؟؟(دو یا سه مورد کافیه)",
     options:[
         "امی/ ویو/ نامتان",
         "فقط فرین",
         "فقط بکی",
         "فقط انگفا"
     ],
-
     answerHash:"79515d"
 },
 
-
 {
     number:"¹⁶",
-
-    text:
-    "در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
-
+    text:"در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
     options:[
         "جینی/ لینگ لینگ/ امی/",
         "فرین/ بکی/ انگفا",
         "فای/ یوکو/ شارلوت",
         "فقط جینا"
     ],
-
     answerHash:"d816d8"
 },
 
-
 {
     number:"سؤال بعدی",
-
-    text:
-    "کدام کاپل جی‌ال باهم در یک سریال بودن ولی نقش هردو استریت بود؟",
-
+    text:"کدام کاپل جی‌ال باهم در یک سریال بودن ولی نقش هردو استریت بود؟",
     options:[
         "نامتان‌فیلم",
         "فرین بکی",
         "انگفا شارلوت",
         "فای یوکو"
     ],
-
     answerHash:"3058c4"
 },
 
-
 {
     number:"سؤال بعدی",
-
-    text:
-    "در کدام سریال شخصیت اصلی سه تا دختر بوسید؟",
-
+    text:"در کدام سریال شخصیت اصلی سه تا دختر بوسید؟",
     options:[
         "گوریا گرل رولز",
         "GAP",
         "Pluto",
         "Uranus 2324"
     ],
-
     answerHash:"918c2c"
 },
 
-
 {
     number:"سؤال بعدی",
-
-    text:
-    "کدام سریال شخصیت فرعی کیس بیشتری داره با شخصیت اصلی تا خود کاپل سریال؟",
-
+    text:"کدام سریال شخصیت فرعی کیس بیشتری داره با شخصیت اصلی تا خود کاپل سریال؟",
     options:[
         "جی مون شادو",
         "Pluto",
         "GAP",
         "Blank"
     ],
-
     answerHash:"61dbf1"
 },
 
-
 {
     number:"سؤال بعدی",
-
-    text:
-    "کدوم سریال جی ال مثلث عشقی خانوادگی داشت؟",
-
+    text:"کدوم سریال جی ال مثلث عشقی خانوادگی داشت؟",
     options:[
         "پلوتو: آی اون،اوب‌اوم، متاوی",
         "GAP: فرین و بکی",
         "Uranus 2324",
         "The Loyal Pin"
     ],
-
     answerHash:"13ec70"
 },
 
-
 {
     number:"سؤال بعدی",
-
-    text:
-    "در کدام سریال جی ال داشتیم یه تریسام می‌گرفتیم؟",
-
+    text:"در کدام سریال جی ال داشتیم یه تریسام می‌گرفتیم؟",
     options:[
         "پلوتو: شخصیت کاپوک سایزی و ارن",
         "GAP",
         "The Loyal Pin",
         "Blank"
     ],
-
     answerHash:"691c78"
 },
 
-
 {
     number:"¹⁸",
-
-    text:
-    "کدوم کاپل جی ال تایلندی در واقعیت از هم جدا شدن (سه مورد کافیه)؟؟",
-
+    text:"کدوم کاپل جی ال تایلندی در واقعیت از هم جدا شدن (سه مورد کافیه)؟؟",
     options:[
         "اینجوی جون / میو رنه / میونیچ جون / تان یادا",
         "فرین بکی",
         "انگفا شارلوت",
         "نامتان فیلم"
     ],
-
     answerHash:"70966d"
 },
 
-
 {
     number:"¹⁹",
-
-    text:
-    "در سریال عشق سمی جینی نقش پت و جینا نقش دکتر پرم سینی رو بازی کرد (بله یا خیر)؟؟",
-
+    text:"در سریال عشق سمی جینی نقش پت و جینا نقش دکتر پرم سینی رو بازی کرد (بله یا خیر)؟؟",
     options:[
         "بله",
         "خیر"
     ],
-
     answerHash:"4dbce3"
 },
-
 
 {
     number:"20",
-
-    text:
-    "سریال جی ال فور المنت از چهار عنصر خاک آب باد و آتش تشکیل شده بود ( بله یا خیر)؟؟",
-
+    text:"سریال جی ال فور المنت از چهار عنصر خاک آب باد و آتش تشکیل شده بود ( بله یا خیر)؟؟",
     options:[
         "بله",
         "خیر"
     ],
-
     answerHash:"701032"
 },
-
 
 {
     number:"²¹",
-
-    text:
-    "لاو و میلک از هم جدا شدن (بله یا خیر)",
-
+    text:"لاو و میلک از هم جدا شدن (بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-
     answerHash:"4dbce3"
 },
-
 
 {
     number:"²²",
-
-    text:
-    "کمپانی جی ام ام فقط کاپل پسر بی ال داره (بله یا خیر)",
-
+    text:"کمپانی جی ام ام فقط کاپل پسر بی ال داره (بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-
-    answerHash:"701032"
-},
-
-
-{
-    number:"²³",
-
-    text:
-    "پی تیک رئیس کمپانی نورث استاره( بله یا خیر)",
-
-    options:[
-        "بله",
-        "خیر"
-    ],
-
     answerHash:"4dbce3"
 },
 
-
 {
-    number:"²⁴",
-
-    text:
-    "فرین با شارلوت کاپل  کاری هستن(بله یا خیر)",
-
+    number:"²³",
+    text:"پی تیک رئیس کمپانی نورث استاره( بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-
     answerHash:"701032"
 },
 
-
 {
-    number:"²⁵",
-
-    text:
-    "اولین سریال جی ال تایلند پلاتو بود(بله یا خیر",
-
+    number:"²⁴",
+    text:"فرین با شارلوت کاپل  کاری هستن(بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
+    answerHash:"4dbce3"
+},
 
-    answerHash:"701032"
+{
+    number:"²⁵",
+    text:"اولین سریال جی ال تایلند پلاتو بود(بله یا خیر",
+    options:[
+        "بله",
+        "خیر"
+    ],
+    answerHash:"4dbce3"
 }
 
 ];
 
 
 /* =====================================================
-   HASH
+   HASH FUNCTION
 ===================================================== */
 
 function makeHash(text){
@@ -1481,15 +1360,9 @@ function makeHash(text){
         h2 >>>= 0;
     }
 
-    const first =
-        h1.toString(16);
-
-    const second =
-        h2.toString(16);
-
     return (
-        first +
-        second
+        h1.toString(16) +
+        h2.toString(16)
     ).slice(0,6);
 }
 
@@ -1499,84 +1372,52 @@ function makeHash(text){
 ===================================================== */
 
 const welcomeScreen =
-    document.getElementById(
-        "welcomeScreen"
-    );
+    document.getElementById("welcomeScreen");
 
 const quizScreen =
-    document.getElementById(
-        "quizScreen"
-    );
+    document.getElementById("quizScreen");
 
 const resultScreen =
-    document.getElementById(
-        "resultScreen"
-    );
+    document.getElementById("resultScreen");
 
 const nameInput =
-    document.getElementById(
-        "nameInput"
-    );
+    document.getElementById("nameInput");
 
 const nameError =
-    document.getElementById(
-        "nameError"
-    );
+    document.getElementById("nameError");
 
 const startBtn =
-    document.getElementById(
-        "startBtn"
-    );
+    document.getElementById("startBtn");
 
 const questionCounter =
-    document.getElementById(
-        "questionCounter"
-    );
+    document.getElementById("questionCounter");
 
 const questionNumber =
-    document.getElementById(
-        "questionNumber"
-    );
+    document.getElementById("questionNumber");
 
 const questionText =
-    document.getElementById(
-        "questionText"
-    );
+    document.getElementById("questionText");
 
 const optionsContainer =
-    document.getElementById(
-        "options"
-    );
+    document.getElementById("options");
 
 const nextBtn =
-    document.getElementById(
-        "nextBtn"
-    );
+    document.getElementById("nextBtn");
 
 const progressBar =
-    document.getElementById(
-        "progressBar"
-    );
+    document.getElementById("progressBar");
 
 const resultUserName =
-    document.getElementById(
-        "resultUserName"
-    );
+    document.getElementById("resultUserName");
 
 const resultScore =
-    document.getElementById(
-        "resultScore"
-    );
+    document.getElementById("resultScore");
 
 const perfectMessage =
-    document.getElementById(
-        "perfectMessage"
-    );
+    document.getElementById("perfectMessage");
 
 const confetti =
-    document.getElementById(
-        "confetti"
-    );
+    document.getElementById("confetti");
 
 
 /* =====================================================
@@ -1598,21 +1439,18 @@ let selectedAnswers =
 ===================================================== */
 
 const STORAGE_KEY =
-    "gl_graphy_quiz_state_v2";
+    "gl_graphy_quiz_state_v3";
 
 
 function saveState(){
 
     const state = {
 
-        userName:
-            userName,
+        userName:userName,
 
-        currentQuestion:
-            currentQuestion,
+        currentQuestion:currentQuestion,
 
-        selectedAnswers:
-            selectedAnswers
+        selectedAnswers:selectedAnswers
 
     };
 
@@ -1656,8 +1494,7 @@ function loadState(){
         }
 
         if(
-            typeof state.userName ===
-            "string"
+            typeof state.userName === "string"
         ){
 
             userName =
@@ -1791,7 +1628,8 @@ function renderQuestion(){
     questionText.textContent =
         question.text;
 
-    optionsContainer.innerHTML = "";
+    optionsContainer.innerHTML =
+        "";
 
     const previousAnswer =
         selectedAnswers[
@@ -1816,8 +1654,7 @@ function renderQuestion(){
                 "option";
 
             if(
-                previousAnswer ===
-                index
+                previousAnswer === index
             ){
 
                 button.classList.add(
@@ -1840,11 +1677,6 @@ function renderQuestion(){
                 document.createElement(
                     "span"
                 );
-
-            /*
-                textContent is intentionally used
-                for user-safe DOM insertion.
-            */
 
             text.textContent =
                 optionText;
@@ -1904,11 +1736,6 @@ function selectOption(index){
         currentQuestion
     ] = index;
 
-    /*
-        ONLY selected state is shown.
-        No correct/wrong feedback.
-    */
-
     const buttons =
         optionsContainer.querySelectorAll(
             ".option"
@@ -1942,9 +1769,7 @@ function updateNextButton(){
         ];
 
     nextBtn.disabled =
-        !Number.isInteger(
-            selected
-        );
+        !Number.isInteger(selected);
 
     if(
         currentQuestion ===
@@ -2053,8 +1878,7 @@ nameInput.addEventListener(
     event=>{
 
         if(
-            event.key ===
-            "Enter"
+            event.key === "Enter"
         ){
 
             startBtn.click();
@@ -2116,11 +1940,6 @@ function calculateScore(){
             ) * 100
         );
 
-    /*
-        طبق قانون آزمون:
-        اگر کمتر از 10 باشد، 10 نمایش داده می‌شود.
-    */
-
     return Math.max(
         10,
         rawPercentage
@@ -2136,10 +1955,6 @@ function finishQuiz(){
 
     const percentage =
         calculateScore();
-
-    /*
-        نام کاربر با textContent نمایش داده می‌شود.
-    */
 
     resultUserName.textContent =
         `نام کاربر: ${userName}`;
@@ -2165,8 +1980,8 @@ function finishQuiz(){
     }
 
     /*
-        بعد از پایان آزمون وضعیت موقت پاک می‌شود.
-        پاسخ صحیح هیچ‌وقت در Storage ذخیره نشده است.
+        هیچ پاسخ صحیحی در Storage ذخیره نشده.
+        بعد از پایان، وضعیت موقت پاک می‌شود.
     */
 
     clearState();
@@ -2195,8 +2010,7 @@ function launchConfetti(){
         "show"
     );
 
-    const pieces =
-        100;
+    const pieces = 100;
 
     for(
         let i = 0;
@@ -2293,9 +2107,7 @@ window.addEventListener(
         if(
             quizScreen.classList.contains(
                 "active"
-            ) &&
-            currentQuestion <
-            questions.length
+            )
         ){
 
             saveState();
@@ -2307,7 +2119,8 @@ window.addEventListener(
 /* =====================================================
    END
 ===================================================== */
+
 </script>
 
 </body>
-    </html>
+        </html>
