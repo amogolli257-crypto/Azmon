@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#ff176f">
-<meta name="description" content="GL Graphy - Thai GL Quiz">
-<title>GL Graphy 💗</title>
+<title>GL Graphy</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -17,2110 +13,1194 @@
 }
 
 :root{
-    --pink:#ff176f;
-    --pink-light:#ff72aa;
-    --red:#ff1744;
-    --bg:#090107;
-    --card:rgba(255,255,255,.07);
-    --border:rgba(255,82,145,.32);
+    --pink:#ff2f92;
+    --hot:#ff006e;
+    --red:#d90429;
+    --dark:#19000b;
+    --glass:rgba(255,255,255,.09);
+    --border:rgba(255,255,255,.2);
     --text:#fff;
-    --muted:#dcb8c7;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    min-height:100%;
+    font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
     min-height:100vh;
     color:var(--text);
-    font-family:
-        "Segoe UI",
-        Tahoma,
-        Arial,
-        sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(255,23,111,.27),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(255,23,68,.24),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #080106,
-            #20040e 50%,
-            #080106
-        );
-
     overflow-x:hidden;
+    background:
+        radial-gradient(circle at 15% 20%,rgba(255,0,110,.45),transparent 30%),
+        radial-gradient(circle at 85% 80%,rgba(217,4,41,.5),transparent 32%),
+        linear-gradient(135deg,#17000a,#4b0019,#160009);
 }
 
-body::before,
-body::after{
-    content:"";
+/* Background particles */
+.particles{
     position:fixed;
-    width:380px;
-    height:380px;
-    border-radius:50%;
-    filter:blur(90px);
-    opacity:.28;
-    z-index:-1;
+    inset:0;
+    overflow:hidden;
     pointer-events:none;
-    animation:floatGlow 10s ease-in-out infinite alternate;
+    z-index:0;
 }
 
-body::before{
-    background:#ff176f;
-    top:-160px;
-    left:-130px;
+.particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#fff;
+    opacity:.5;
+    box-shadow:0 0 15px #ff4fa3;
+    animation:float 8s infinite ease-in-out;
 }
 
-body::after{
-    background:#ff1744;
-    right:-140px;
-    bottom:-160px;
-    animation-delay:2s;
+.particle:nth-child(1){left:8%;top:20%;animation-delay:0s}
+.particle:nth-child(2){left:18%;top:70%;animation-delay:2s}
+.particle:nth-child(3){left:30%;top:40%;animation-delay:4s}
+.particle:nth-child(4){left:44%;top:15%;animation-delay:1s}
+.particle:nth-child(5){left:57%;top:75%;animation-delay:3s}
+.particle:nth-child(6){left:70%;top:30%;animation-delay:5s}
+.particle:nth-child(7){left:82%;top:60%;animation-delay:2s}
+.particle:nth-child(8){left:93%;top:15%;animation-delay:4s}
+.particle:nth-child(9){left:52%;top:48%;animation-delay:1s}
+.particle:nth-child(10){left:12%;top:90%;animation-delay:5s}
+.particle:nth-child(11){left:88%;top:88%;animation-delay:3s}
+.particle:nth-child(12){left:38%;top:90%;animation-delay:6s}
+
+@keyframes float{
+    0%,100%{transform:translateY(0) scale(1);opacity:.25}
+    50%{transform:translateY(-35px) scale(1.6);opacity:.8}
 }
 
-@keyframes floatGlow{
-    from{
-        transform:translate(0,0) scale(1);
-    }
-
-    to{
-        transform:translate(80px,60px) scale(1.25);
-    }
-}
-
-.app{
-    width:min(900px,94%);
+.container{
+    position:relative;
+    z-index:1;
+    width:min(920px,94%);
     margin:auto;
     padding:25px 0 40px;
 }
 
-header{
+/* Header */
+.header{
     text-align:center;
-    margin-bottom:24px;
+    margin-bottom:25px;
 }
 
 .logo{
-    font-size:clamp(45px,10vw,78px);
-    font-weight:1000;
+    font-size:clamp(42px,10vw,78px);
+    font-weight:900;
     letter-spacing:2px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #ff72aa,
-            #ff1744,
-            #fff
-        );
-
-    background-size:300% auto;
-
+    background:linear-gradient(90deg,#fff,#ff8bc4,#ff167f,#fff);
+    background-size:250%;
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
-
     animation:
-        logoGradient 4s linear infinite,
-        logoFloat 3s ease-in-out infinite;
-
-    filter:
-        drop-shadow(0 0 8px rgba(255,23,111,.8))
-        drop-shadow(0 0 25px rgba(255,23,111,.5));
+        logoGlow 3s infinite alternate,
+        gradientMove 5s linear infinite;
 }
 
-@keyframes logoGradient{
-    to{
-        background-position:300% center;
-    }
+@keyframes logoGlow{
+    from{filter:drop-shadow(0 0 8px #ff2f92)}
+    to{filter:drop-shadow(0 0 28px #ff006e)}
 }
 
-@keyframes logoFloat{
-    50%{
-        transform:translateY(-5px);
-    }
+@keyframes gradientMove{
+    from{background-position:0%}
+    to{background-position:250%}
 }
 
 .subtitle{
-    margin-top:4px;
-    color:#ffd5e4;
-    font-size:14px;
-    font-weight:700;
+    margin-top:8px;
+    font-size:clamp(13px,3vw,18px);
+    color:#ffd8e9;
 }
 
-.card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:27px;
-    padding:28px;
-
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.45),
-        inset 0 0 35px rgba(255,40,120,.025),
-        0 0 30px rgba(255,23,111,.08);
-}
-
+/* Screens */
 .screen{
     display:none;
+    animation:screenIn .55s ease;
 }
 
 .screen.active{
     display:block;
-    animation:screenIn .5s ease both;
 }
 
 @keyframes screenIn{
     from{
         opacity:0;
-        transform:translateY(24px) scale(.97);
+        transform:translateY(20px) scale(.98);
     }
-
     to{
         opacity:1;
         transform:translateY(0) scale(1);
     }
 }
 
+/* Glass card */
+.glass{
+    background:linear-gradient(
+        135deg,
+        rgba(255,255,255,.13),
+        rgba(255,255,255,.045)
+    );
+    border:1px solid var(--border);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.15),
+        0 0 35px rgba(255,0,110,.12);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+}
 
-/* =========================
-   WELCOME
-========================= */
-
-#welcomeScreen{
+/* Start */
+.start-card{
+    max-width:650px;
+    margin:35px auto;
     text-align:center;
-    padding:50px 28px;
 }
 
-.welcome-heart{
-    display:block;
-    font-size:65px;
-    margin-bottom:12px;
-    animation:heartBeat 1.6s infinite;
+.start-title{
+    font-size:clamp(27px,6vw,42px);
+    margin-bottom:14px;
+    color:#fff;
+    text-shadow:0 0 20px rgba(255,47,146,.8);
 }
 
-@keyframes heartBeat{
-    0%,100%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.12);
-    }
-}
-
-.welcome-title{
-    font-size:clamp(28px,6vw,43px);
-    font-weight:950;
-    margin-bottom:12px;
-}
-
-.welcome-description{
-    color:var(--muted);
-    line-height:1.9;
-    margin-bottom:28px;
-}
-
-.name-label{
-    display:block;
-    text-align:right;
-    color:#ffd7e6;
-    font-weight:800;
-    margin-bottom:8px;
+.start-text{
+    color:#ffd6e7;
+    margin-bottom:25px;
+    line-height:2;
 }
 
 .name-input{
     width:100%;
-    height:56px;
-
-    border-radius:15px;
-    border:1px solid rgba(255,92,154,.4);
-
+    padding:17px 20px;
+    border-radius:16px;
+    border:1px solid rgba(255,255,255,.2);
     background:rgba(0,0,0,.25);
-    color:white;
-
+    color:#fff;
+    font-size:17px;
     outline:none;
-    padding:0 17px;
-
-    font-size:16px;
-
-    direction:rtl;
-
-    transition:.25s;
-}
-
-.name-input:focus{
-    border-color:var(--pink);
-
-    box-shadow:
-        0 0 0 3px rgba(255,23,111,.12),
-        0 0 22px rgba(255,23,111,.25);
+    text-align:right;
+    transition:.3s;
 }
 
 .name-input::placeholder{
-    color:#9f7887;
+    color:#d9aabd;
 }
 
-.error{
-    min-height:22px;
-    margin-top:8px;
-    color:#ff8cae;
-    font-size:13px;
+.name-input:focus{
+    border-color:#ff4da0;
+    box-shadow:0 0 20px rgba(255,47,146,.3);
 }
 
-.primary-btn{
+/* Buttons */
+.main-btn{
     width:100%;
-    min-height:57px;
-
-    margin-top:17px;
-
-    border:none;
-    border-radius:15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff176f,
-            #ff1744
-        );
-
-    color:white;
-
-    font-size:17px;
-    font-weight:950;
-
+    border:0;
+    border-radius:16px;
+    padding:16px 20px;
+    margin-top:18px;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
     cursor:pointer;
-
-    box-shadow:
-        0 9px 27px rgba(255,23,111,.32),
-        inset 0 1px rgba(255,255,255,.25);
-
+    background:linear-gradient(135deg,#ff006e,#d90429);
+    box-shadow:0 8px 25px rgba(255,0,110,.3);
     transition:.25s;
 }
 
-.primary-btn:hover{
-    transform:translateY(-2px);
-
-    box-shadow:
-        0 13px 32px rgba(255,23,111,.45),
-        0 0 22px rgba(255,23,111,.22);
+.main-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 35px rgba(255,0,110,.5);
 }
 
-.primary-btn:active{
+.main-btn:active{
     transform:scale(.98);
 }
 
-
-/* =========================
-   QUIZ
-========================= */
-
-.quiz-top{
-    margin-bottom:23px;
+.main-btn:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+    transform:none;
 }
 
-.question-count{
+/* Quiz */
+.quiz-card{
+    margin-top:15px;
+}
+
+.quiz-top{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
-    margin-bottom:11px;
-
-    color:#ffc7da;
-    font-weight:850;
-}
-
-.progress-track{
-    width:100%;
-    height:9px;
-
-    border-radius:99px;
-
-    overflow:hidden;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.06);
-}
-
-.progress-bar{
-    height:100%;
-    width:0;
-
-    border-radius:99px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff1744,
-            #ff176f,
-            #ff79af
-        );
-
-    box-shadow:
-        0 0 16px rgba(255,23,111,.65);
-
-    transition:width .45s ease;
-}
-
-.question-box{
-    margin-bottom:23px;
+    gap:15px;
+    margin-bottom:17px;
 }
 
 .question-number{
-    color:#ff78a9;
-    font-size:14px;
-    font-weight:950;
-    margin-bottom:11px;
+    font-size:15px;
+    color:#ffc8df;
+    font-weight:bold;
 }
 
-.question-text{
-    font-size:clamp(20px,4vw,28px);
-    line-height:1.75;
-    font-weight:900;
+.progress-wrap{
+    height:9px;
+    background:rgba(255,255,255,.1);
+    border-radius:99px;
+    overflow:hidden;
+    margin-bottom:27px;
+}
+
+.progress{
+    height:100%;
+    width:4%;
+    border-radius:99px;
+    background:linear-gradient(90deg,#ff006e,#ff70b3);
+    box-shadow:0 0 15px #ff167f;
+    transition:width .45s ease;
+}
+
+.question{
+    font-size:clamp(20px,4.5vw,29px);
+    line-height:1.9;
+    margin-bottom:25px;
+    color:#fff;
 }
 
 .options{
-    display:grid;
-    gap:12px;
+    display:flex;
+    flex-direction:column;
+    gap:13px;
 }
 
 .option{
-    position:relative;
-
     width:100%;
-    min-height:63px;
-
-    display:flex;
-    align-items:center;
-
-    gap:13px;
-
-    padding:14px 16px;
-
-    border:1px solid rgba(255,92,154,.24);
+    padding:17px 18px;
+    border:1px solid rgba(255,255,255,.16);
     border-radius:17px;
-
-    background:rgba(255,255,255,.045);
-
-    color:white;
-
-    cursor:pointer;
-
-    text-align:right;
-
+    background:rgba(0,0,0,.19);
+    color:#fff;
     font-size:16px;
-    line-height:1.65;
-
-    transition:
-        transform .2s,
-        border .2s,
-        background .2s,
-        box-shadow .2s;
+    text-align:right;
+    cursor:pointer;
+    transition:.25s;
+    line-height:1.7;
 }
 
 .option:hover{
+    background:rgba(255,47,146,.12);
+    border-color:rgba(255,100,170,.5);
     transform:translateX(-3px);
-
-    border-color:
-        rgba(255,92,154,.65);
-
-    background:
-        rgba(255,23,111,.08);
 }
 
 .option.selected{
-    border-color:#ff4c8f;
-
-    background:
-        linear-gradient(
-            100deg,
-            rgba(255,23,111,.19),
-            rgba(255,23,68,.07)
-        );
-
+    background:rgba(255,47,146,.25);
+    border-color:#ff66ae;
     box-shadow:
-        0 0 0 2px rgba(255,23,111,.08),
-        0 0 22px rgba(255,23,111,.17);
+        0 0 18px rgba(255,47,146,.28),
+        inset 0 0 20px rgba(255,47,146,.08);
+    transform:scale(1.01);
 }
 
-.option-letter{
-    flex:0 0 36px;
-
-    width:36px;
-    height:36px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:11px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.09);
-
-    color:#ffc0d7;
-
-    font-weight:950;
-}
-
-.option.selected .option-letter{
-    background:
-        linear-gradient(
-            135deg,
-            #ff176f,
-            #ff1744
-        );
-
-    color:white;
-
-    box-shadow:
-        0 0 15px rgba(255,23,111,.35);
-}
-
-.quiz-bottom{
-    display:flex;
-    justify-content:flex-end;
-
+.next-area{
     margin-top:25px;
 }
 
-.next-btn{
-    min-width:155px;
-    min-height:53px;
-
-    border:none;
-    border-radius:14px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff176f,
-            #ff1744
-        );
-
-    color:white;
-
-    font-weight:950;
-    font-size:16px;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    box-shadow:
-        0 8px 25px rgba(255,23,111,.25);
-}
-
-.next-btn:hover:not(:disabled){
-    transform:translateY(-2px);
-}
-
-.next-btn:disabled{
-    opacity:.35;
-    cursor:not-allowed;
-    box-shadow:none;
-}
-
-
-/* =========================
-   RESULT
-========================= */
-
-#resultScreen{
+/* Result */
+.result-card{
     text-align:center;
-    padding:45px 28px;
+    margin:35px auto;
+    max-width:650px;
 }
 
 .result-icon{
-    display:block;
-    font-size:70px;
+    font-size:65px;
     margin-bottom:10px;
+    animation:trophy 1.5s infinite alternate;
+}
+
+@keyframes trophy{
+    from{transform:translateY(0) rotate(-4deg)}
+    to{transform:translateY(-10px) rotate(4deg)}
 }
 
 .result-title{
-    font-size:clamp(28px,6vw,43px);
-    font-weight:1000;
+    font-size:clamp(27px,6vw,40px);
     margin-bottom:20px;
+    text-shadow:0 0 20px rgba(255,47,146,.8);
 }
 
 .result-name{
-    color:#ffd4e3;
+    color:#ffcce1;
     font-size:18px;
-    margin-bottom:9px;
+    margin-bottom:15px;
 }
 
-.result-score{
-    font-size:clamp(65px,15vw,110px);
-    line-height:1;
-
-    font-weight:1000;
-
-    margin:13px 0 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff,
-            #ff74ac,
-            #ff1744
-        );
-
+.score{
+    font-size:clamp(60px,15vw,100px);
+    font-weight:900;
+    background:linear-gradient(180deg,#fff,#ff63ad);
     -webkit-background-clip:text;
     background-clip:text;
-
     color:transparent;
-
-    filter:
-        drop-shadow(
-            0 0 20px rgba(255,23,111,.45)
-        );
+    filter:drop-shadow(0 0 20px rgba(255,0,110,.5));
+    margin:5px 0 18px;
 }
 
-.result-label{
-    color:#ffc1d6;
-    font-weight:850;
-}
-
-.screenshot-message{
-    margin-top:25px;
-
-    padding:17px;
-
-    border-radius:15px;
-
-    background:
-        rgba(255,23,111,.08);
-
-    border:
-        1px solid rgba(255,92,154,.22);
-
-    color:#ffd9e7;
-
-    font-weight:750;
-
-    line-height:1.8;
+.screenshot-msg{
+    line-height:2;
+    color:#ffd7e8;
+    font-size:16px;
 }
 
 .perfect{
     display:none;
-
-    margin-top:22px;
-
-    font-size:26px;
-
-    font-weight:1000;
-
-    color:#ffd3e2;
-
-    text-shadow:
-        0 0 8px #ff176f,
-        0 0 22px #ff176f;
-
-    animation:
-        perfectPulse .8s ease-in-out infinite alternate,
-        perfectPop .6s ease both;
+    font-size:24px;
+    font-weight:bold;
+    margin-top:18px;
+    color:#fff;
+    animation:perfectGlow 1s infinite alternate;
 }
 
 .perfect.show{
     display:block;
 }
 
-@keyframes perfectPulse{
+@keyframes perfectGlow{
     from{
+        text-shadow:0 0 8px #ff2f92;
         transform:scale(1);
     }
-
     to{
-        transform:scale(1.07);
+        text-shadow:
+            0 0 10px #fff,
+            0 0 25px #ff2f92,
+            0 0 45px #ff006e;
+        transform:scale(1.06);
     }
 }
 
-@keyframes perfectPop{
-    from{
-        opacity:0;
-        transform:scale(.5);
-    }
-
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-
-/* =========================
-   CONFETTI
-========================= */
-
-.confetti-container{
-    pointer-events:none;
-
+/* Decorative hearts */
+.heart{
     position:fixed;
-    inset:0;
-
-    overflow:hidden;
-
-    z-index:50;
-
-    display:none;
+    font-size:18px;
+    pointer-events:none;
+    opacity:.25;
+    animation:heartFloat 10s linear infinite;
+    z-index:0;
 }
 
-.confetti-container.show{
-    display:block;
+.h1{left:4%;bottom:-30px;animation-delay:1s}
+.h2{left:91%;bottom:-30px;animation-delay:4s}
+.h3{left:50%;bottom:-30px;animation-delay:7s}
+
+@keyframes heartFloat{
+    0%{transform:translateY(0) rotate(0);opacity:0}
+    15%{opacity:.35}
+    80%{opacity:.2}
+    100%{transform:translateY(-110vh) rotate(180deg);opacity:0}
 }
 
-.confetti{
-    position:absolute;
-
-    top:-25px;
-
-    width:8px;
-    height:15px;
-
-    border-radius:2px;
-
-    background:#ff5c9a;
-
-    animation:
-        confettiFall 3s linear forwards;
-}
-
-@keyframes confettiFall{
-    to{
-        transform:
-            translateY(110vh)
-            rotate(720deg);
-
-        opacity:0;
-    }
-}
-
-footer{
-    text-align:center;
-
-    margin-top:18px;
-
-    color:#815b6b;
-
-    font-size:12px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
+/* Mobile */
 @media(max-width:600px){
-
-    .app{
-        width:94%;
-        padding-top:17px;
+    .container{
+        width:92%;
+        padding-top:15px;
     }
 
-    .card{
-        padding:19px;
-        border-radius:21px;
+    .glass{
+        padding:21px 17px;
+        border-radius:22px;
     }
 
-    #welcomeScreen,
-    #resultScreen{
-        padding:35px 19px;
+    .header{
+        margin-bottom:14px;
     }
 
-    .question-text{
-        line-height:1.65;
+    .subtitle{
+        line-height:1.8;
+    }
+
+    .quiz-top{
+        margin-bottom:13px;
+    }
+
+    .question{
+        font-size:19px;
+        line-height:2;
     }
 
     .option{
-        min-height:58px;
-        padding:12px;
-        font-size:14px;
+        font-size:15px;
+        padding:15px 13px;
     }
 
-    .option-letter{
-        flex-basis:32px;
-        width:32px;
-        height:32px;
-    }
-
-    .quiz-bottom{
-        display:block;
-    }
-
-    .next-btn{
-        width:100%;
+    .main-btn{
+        font-size:16px;
     }
 }
-
-@media(prefers-reduced-motion:reduce){
-
-    *,
-    *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
-    }
-}
-
 </style>
 </head>
 
-
 <body>
 
+<div class="particles">
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+    <span class="particle"></span>
+</div>
 
-<div
-    class="confetti-container"
-    id="confetti"
-></div>
+<div class="heart h1">💗</div>
+<div class="heart h2">💖</div>
+<div class="heart h3">💕</div>
 
+<div class="container">
 
-<div class="app">
+    <header class="header">
+        <div class="logo">GL Graphy</div>
+        <div class="subtitle">
+            این صفحه رو اسکرین شات بگیرید و برای ادمین بفرستید 📸
+        </div>
+    </header>
 
+    <!-- START SCREEN -->
+    <section id="startScreen" class="screen active">
+        <div class="glass start-card">
 
-<header>
+            <h1 class="start-title">Welcome to GL Graphy 💗</h1>
 
-    <div class="logo">
-        GL Graphy
-    </div>
+            <p class="start-text">
+                نام خود را وارد کنید
+            </p>
 
-    <div class="subtitle">
-        این صفحه را اسکرین‌شات بگیرید و برای ادمین بفرستید 📸
-    </div>
+            <input
+                id="nameInput"
+                class="name-input"
+                type="text"
+                maxlength="40"
+                autocomplete="off"
+                placeholder="نام شما..."
+            >
 
-</header>
-
-
-<main class="card">
-
-
-<!-- =========================
-     WELCOME
-========================= -->
-
-<section
-    id="welcomeScreen"
-    class="screen active"
->
-
-    <span class="welcome-heart">
-        💗
-    </span>
-
-    <h1 class="welcome-title">
-        Welcome to GL Graphy 💗
-    </h1>
-
-    <p class="welcome-description">
-        آماده‌ای میزان اطلاعاتت درباره Thai GL رو امتحان کنی؟ ✨
-    </p>
-
-    <label
-        class="name-label"
-        for="nameInput"
-    >
-        نام خود را وارد کنید
-    </label>
-
-    <input
-        id="nameInput"
-        class="name-input"
-        type="text"
-        maxlength="40"
-        autocomplete="name"
-        placeholder="نام شما..."
-    >
-
-    <div
-        id="nameError"
-        class="error"
-    ></div>
-
-    <button
-        id="startBtn"
-        class="primary-btn"
-        type="button"
-    >
-        شروع آزمون ✨
-    </button>
-
-</section>
-
-
-<!-- =========================
-     QUIZ
-========================= -->
-
-<section
-    id="quizScreen"
-    class="screen"
->
-
-    <div class="quiz-top">
-
-        <div class="question-count">
-
-            <span id="questionCounter">
-                Question 1 / 26
-            </span>
+            <button id="startBtn" class="main-btn">
+                شروع آزمون ✨
+            </button>
 
         </div>
+    </section>
 
-        <div class="progress-track">
+    <!-- QUIZ SCREEN -->
+    <section id="quizScreen" class="screen">
+        <div class="glass quiz-card">
 
-            <div
-                id="progressBar"
-                class="progress-bar"
-            ></div>
+            <div class="quiz-top">
+                <span id="questionNumber" class="question-number">
+                    Question 1 / 25
+                </span>
+            </div>
+
+            <div class="progress-wrap">
+                <div id="progress" class="progress"></div>
+            </div>
+
+            <div id="question" class="question"></div>
+
+            <div id="options" class="options"></div>
+
+            <div class="next-area">
+                <button id="nextBtn" class="main-btn" disabled>
+                    بعدی →
+                </button>
+            </div>
 
         </div>
+    </section>
 
-    </div>
+    <!-- RESULT SCREEN -->
+    <section id="resultScreen" class="screen">
+        <div class="glass result-card">
 
+            <div class="result-icon">🏆</div>
 
-    <div class="question-box">
+            <h1 class="result-title">
+                🎉 آزمون به پایان رسید!
+            </h1>
 
-        <div
-            id="questionNumber"
-            class="question-number"
-        ></div>
+            <div class="result-name">
+                GL Graphy 💗<br><br>
+                نام: <strong id="resultName"></strong>
+            </div>
 
-        <div
-            id="questionText"
-            class="question-text"
-        ></div>
+            <div id="score" class="score">10%</div>
 
-    </div>
+            <div class="screenshot-msg">
+                این صفحه رو اسکرین شات بگیرید و برای ادمین بفرستید 📸❤️
+            </div>
 
+            <div id="perfect" class="perfect">
+                PERFECT! 👑💗
+            </div>
 
-    <div
-        id="options"
-        class="options"
-    ></div>
-
-
-    <div class="quiz-bottom">
-
-        <button
-            id="nextBtn"
-            class="next-btn"
-            type="button"
-            disabled
-        >
-            بعدی →
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     RESULT
-========================= -->
-
-<section
-    id="resultScreen"
-    class="screen"
->
-
-    <span class="result-icon">
-        🎉
-    </span>
-
-    <h2 class="result-title">
-        🎉 آزمون به پایان رسید!
-    </h2>
-
-    <div class="result-name">
-        GL Graphy 💗
-    </div>
-
-    <div
-        id="resultUserName"
-        class="result-name"
-    ></div>
-
-    <div class="result-label">
-        امتیاز:
-    </div>
-
-    <div
-        id="resultScore"
-        class="result-score"
-    >
-        10%
-    </div>
-
-    <div
-        id="perfectMessage"
-        class="perfect"
-    >
-        PERFECT! 👑💗
-    </div>
-
-    <div class="screenshot-message">
-        این صفحه را اسکرین‌شات بگیرید و برای ادمین بفرستید 📸❤️
-    </div>
-
-</section>
-
-
-</main>
-
-
-<footer>
-    GL Graphy 💗
-</footer>
-
+        </div>
+    </section>
 
 </div>
 
-
 <script>
-
 "use strict";
 
-
-/* =====================================================
-   GL GRAPHY QUIZ
-   TOTAL QUESTIONS = 26
-
-   پاسخ صحیح مستقیماً به صورت answer: 0/1
-   ذخیره نشده و با Hash بررسی می‌شود.
-
-   توجه:
-   این پروژه کاملاً Client-Side است.
-   بنابراین هیچ Client-Side Quiz ای 100٪ ضد هک نیست.
-===================================================== */
-
-
-/* =====================================================
-   QUESTIONS
-===================================================== */
+/*
+    GL Graphy
+    تمام پروژه در همین فایل است.
+*/
 
 const questions = [
 
 {
-    number:"¹",
-    text:"سه بازیگر جی ال ببر که دورگه باشن(یعنی بجز رگ تایلندی یک رگ دیگه هم داشته باشن)",
+    q:"سه بازیگر جی ال ببر که دورگه باشن(یعنی بجز رگ تایلندی یک رگ دیگه هم داشته باشن)",
     options:[
-        "جینا و سونیا شارلوت فای دورگه زیاد داریم.....",
-        "فقط فرین و بکی",
-        "فقط انگفا و شارلوت",
-        "فقط لینگ لینگ و اورم"
+        "فرین، لینگ‌لینگ، انگفا",
+        "شارلوت، جینا، سونیا",
+        "جینی، لینا، لوکمی",
+        "جینگ‌جینگ، جون، فای"
     ],
-    answerHash:"3ff409"
+    answer:1
 },
 
 {
-    number:"²",
-    text:"دو بازیگر جی ال نام ببرین که زیر سن 20 سالگی سریال بازی کردن؟؟",
+    q:"دو بازیگر جی ال نام ببرین که زیر سن 20 سالگی سریال بازی کردن؟؟",
     options:[
+        "بکی اورم",
+        "شارلوت میو",
         "پنگجی جینا",
-        "فرین بکی",
-        "انگفا شارلوت",
-        "فای یوکو"
+        "فرین سونیا"
     ],
-    answerHash:"e732eb"
+    answer:2
 },
 
 {
-    number:"³",
-    text:"کاپل انگفا شارلوت تا الان  چند تا سریال کاپلی بازی کردن؟؟",
+    q:"کاپل انگفا شارلوت تا الان  چند تا سریال کاپلی بازی کردن؟؟",
     options:[
-        "دوتا",
-        "سه‌تا",
-        "چهارتا",
-        "شش‌تا"
+        "۳ تا",
+        "۴ تا",
+        "۵ تا",
+        "۶ تا"
     ],
-    answerHash:"3d8153"
+    answer:2
 },
 
 {
-    number:"⁴",
-    text:"دلیل جدایی فای و یوکو چی بود؟؟",
+    q:"دلیل جدایی فای و یوکو چی بود؟؟",
     options:[
-        "بخاطر اینکه یوکو فای ایگنور کرد و از کمپانی بیرون نیومد و جواب فای رو نداد چنین چیزی شبیه همین",
-        "به دلیل تغییر کشور محل زندگی",
-        "به دلیل پایان فیلمبرداری یک سریال",
-        "به دلیل اختلاف در انتخاب نقش"
+        "به دلیل اینکه یوکو فای رو ایگنور کرد و از کمپانی بیرون نیومد",
+        "به دلیل پایان قرارداد یوکو",
+        "به دلیل مشکلات مالی کمپانی",
+        "به دلیل تغییر محل سکونت فای"
     ],
-    answerHash:"5fad8a"
+    answer:0
 },
 
 {
-    number:"⁵",
-    text:"اسم دو کارکتر نقش اصلی سریال گپ رو نام ببر؟؟",
+    q:"اسم دو کارکتر نقش اصلی سریال گپ رو نام ببر؟؟",
     options:[
-        "فرین بکی",
-        "انگفا شارلوت",
-        "فای یوکو",
-        "نامتان فیلم"
+        "بکی سم",
+        "سم مون",
+        "فرین سم",
+        "مون بکی"
     ],
-    answerHash:"97373d"
+    answer:1
 },
 
 {
-    number:"⁶",
-    text:"کدوم سریال از کاپل فرین بکی هست که داره تاریخ ساخت عقب میوفته اسم سریال رو بگو؟؟",
+    q:"کدوم سریال از کاپل فرین بکی هست که داره تاریخ ساخت عقب میوفته؟؟",
     options:[
-        "کرانیوم",
-        "گل‌های آبی",
-        "Pluto",
-        "GAP"
-    ],
-    answerHash:"ebe06d"
-},
-
-{
-    number:"⁷",
-    text:"کدام از بازیگرا ها کمپانی خودشون رو راه اندازی کردن دو تا نام ببر؟؟",
-    options:[
-        "فرین / بکی/ فی و می/ فای...",
-        "فقط انگفا",
-        "فقط شارلوت",
-        "فقط نامتان"
-    ],
-    answerHash:"1bc1d1"
-},
-
-{
-    number:"⁸",
-    text:"یک بازیگر جی ال نام ببر که توی میس گرند هم نقش ایفا کرده؟؟",
-    options:[
-        "انگفا",
-        "بکی",
-        "لینگ لینگ",
-        "جینا"
-    ],
-    answerHash:"64114d"
-},
-
-{
-    number:"⁹",
-    text:"در حال حاضر کدوم از کاپل جی ال هست که به طور رسمی باهم تو رابطه هستن نام ببر؟؟",
-    options:[
-        "نامتان فیلم",
-        "فرین بکی",
-        "انگفا شارلوت",
-        "فای یوکو"
-    ],
-    answerHash:"a087f1"
-},
-
-{
-    number:"10",
-    text:"اسم دوتا بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
-    options:[
-        "فای / آیس/ لنا/ لینگ لینگ / فرین",
-        "فقط بکی و جینا",
-        "فقط پنگجی و جینا",
-        "فقط شارلوت و بکی"
-    ],
-    answerHash:"5ecadb"
-},
-
-{
-    number:"¹¹",
-    text:"یک سریال جی ال رو نام ببرین که بیشترین قسمت رو داشته؟؟",
-    options:[
-        "رویال پین",
-        "GAP",
-        "Pluto",
-        "Uranus 2324"
-    ],
-    answerHash:"b18abd"
-},
-
-{
-    number:"¹²",
-    text:"چند تا بازیگر جی ال نام ببرید که در سریالش سیگار کشیدن؟؟(دو یا سه مورد کافیه)",
-    options:[
-        "امی/ ویو/ نامتان",
-        "فقط فرین",
-        "فقط بکی",
-        "فقط انگفا"
-    ],
-    answerHash:"79515d"
-},
-
-{
-    number:"¹⁶",
-    text:"در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
-    options:[
-        "جینی/ لینگ لینگ/ امی/",
-        "فرین/ بکی/ انگفا",
-        "فای/ یوکو/ شارلوت",
-        "فقط جینا"
-    ],
-    answerHash:"d816d8"
-},
-
-{
-    number:"سؤال بعدی",
-    text:"کدام کاپل جی‌ال باهم در یک سریال بودن ولی نقش هردو استریت بود؟",
-    options:[
-        "نامتان‌فیلم",
-        "فرین بکی",
-        "انگفا شارلوت",
-        "فای یوکو"
-    ],
-    answerHash:"3058c4"
-},
-
-{
-    number:"سؤال بعدی",
-    text:"در کدام سریال شخصیت اصلی سه تا دختر بوسید؟",
-    options:[
-        "گوریا گرل رولز",
-        "GAP",
-        "Pluto",
-        "Uranus 2324"
-    ],
-    answerHash:"918c2c"
-},
-
-{
-    number:"سؤال بعدی",
-    text:"کدام سریال شخصیت فرعی کیس بیشتری داره با شخصیت اصلی تا خود کاپل سریال؟",
-    options:[
-        "جی مون شادو",
-        "Pluto",
-        "GAP",
-        "Blank"
-    ],
-    answerHash:"61dbf1"
-},
-
-{
-    number:"سؤال بعدی",
-    text:"کدوم سریال جی ال مثلث عشقی خانوادگی داشت؟",
-    options:[
-        "پلوتو: آی اون،اوب‌اوم، متاوی",
-        "GAP: فرین و بکی",
         "Uranus 2324",
+        "Cranium",
+        "Lunar Secret",
+        "Under her Rules"
+    ],
+    answer:1
+},
+
+{
+    q:"کدام از بازیگرا ها کمپانی خودشون رو راه اندازی کردن؟؟",
+    options:[
+        "فرین شارلوت",
+        "فای انگفا",
+        "بکی شلی",
+        "فی می"
+    ],
+    answer:3
+},
+
+{
+    q:"یک بازیگر جی ال نام ببر که توی میس گرند هم نقش ایفا کرده؟؟",
+    options:[
+        "فای",
+        "لینگ‌لینگ",
+        "انگفا",
+        "فرین"
+    ],
+    answer:2
+},
+
+{
+    q:"در حال حاضر کدوم از کاپل جی ال هست که به طور رسمی باهم تو رابطه هستن نام ببر؟؟",
+    options:[
+        "فرین بکی",
+        "نامتان فیلم",
+        "لینگ‌اورم",
+        "انگلوت"
+    ],
+    answer:1
+},
+
+{
+    q:"اسم دوتا بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
+    options:[
+        "فرین",
+        "میو",
+        "اورم",
+        "میلک"
+    ],
+    answer:0
+},
+
+{
+    q:"یک سریال جی ال رو نام ببرین که بیشترین قسمت رو داشته؟؟",
+    options:[
+        "عشق سمی",
+        "دیناید لاو",
+        "لویال پین",
+        "اونلی یو"
+    ],
+    answer:2
+},
+
+{
+    q:"چند تا بازیگر جی ال نام ببرید که در سریالش سیگار کشیدن؟؟",
+    options:[
+        "نامتان ویو",
+        "امی بونی",
+        "ویو میم",
+        "فیلم بونی"
+    ],
+    answer:0
+},
+
+{
+    q:"کدام کاپل جی‌ال باهم در یک سریال بودن ولی نقش هردو استریت بود؟",
+    options:[
+        "انگلوت",
+        "نامتان‌فیلم",
+        "ویومیم",
+        "فرین‌بکی"
+    ],
+    answer:1
+},
+
+{
+    q:"در کدام سریال شخصیت اصلی سه تا دختر بوسید؟",
+    options:[
+        "Pluto",
+        "Roller Coaster",
+        "Shades",
+        "Girls Rules"
+    ],
+    answer:3
+},
+
+{
+    q:"در کدام سریال شخصیت فرعی کیس بیشتری داره با شخصیت اصلی تا خود کاپل سریال؟",
+    options:[
+        "Girls Rules",
+        "Shades",
+        "Moonshadow",
+        "Pluto"
+    ],
+    answer:2
+},
+
+{
+    q:"در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
+    options:[
+        "جینا بکی",
+        "جینی میو",
+        "لوکمی امی",
+        "لینگ‌لینگ انگفا"
+    ],
+    answer:2
+},
+
+{
+    q:"کدوم سریال جی ال مثلث عشقی خانوادگی داشت؟",
+    options:[
+        "Roller Coaster",
+        "Pluto",
+        "The Water",
         "The Loyal Pin"
     ],
-    answerHash:"13ec70"
+    answer:1
 },
 
 {
-    number:"سؤال بعدی",
-    text:"در کدام سریال جی ال داشتیم یه تریسام می‌گرفتیم؟",
+    q:"در کدام سریال جی ال داشتیم یه تریسام می‌گرفتیم؟",
     options:[
-        "پلوتو: شخصیت کاپوک سایزی و ارن",
-        "GAP",
-        "The Loyal Pin",
-        "Blank"
+        "Enemies with Benefits",
+        "Moonshadow",
+        "Pluto",
+        "Girl Rules"
     ],
-    answerHash:"691c78"
+    answer:2
 },
 
 {
-    number:"¹⁸",
-    text:"کدوم کاپل جی ال تایلندی در واقعیت از هم جدا شدن (سه مورد کافیه)؟؟",
+    q:"کدوم کاپل جی ال تایلندی در واقعیت از هم جدا شدن؟؟",
     options:[
-        "اینجوی جون / میو رنه / میونیچ جون / تان یادا",
-        "فرین بکی",
-        "انگفا شارلوت",
-        "نامتان فیلم"
+        "اینجوی جون، فی می، کاپوک سایزی",
+        "میو رنه، تان‌یادا، میلک لاو",
+        "میونیچ جون، تان یادا، اینجوی‌جون",
+        "میو رنه، اینجوی‌جون، شلی‌پاندائو"
     ],
-    answerHash:"70966d"
+    answer:2
 },
 
 {
-    number:"¹⁹",
-    text:"در سریال عشق سمی جینی نقش پت و جینا نقش دکتر پرم سینی رو بازی کرد (بله یا خیر)؟؟",
+    q:"در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
     options:[
-        "بله",
-        "خیر"
+        "جینا بکی",
+        "جینی میو",
+        "لوکمی امی",
+        "لینگ‌لینگ انگفا"
     ],
-    answerHash:"4dbce3"
+    answer:2
 },
 
 {
-    number:"20",
-    text:"سریال جی ال فور المنت از چهار عنصر خاک آب باد و آتش تشکیل شده بود ( بله یا خیر)؟؟",
+    q:"لاو و میلک از هم جدا شدن (بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-    answerHash:"701032"
+    answer:1
 },
 
 {
-    number:"²¹",
-    text:"لاو و میلک از هم جدا شدن (بله یا خیر)",
+    q:"کمپانی جی ام ام فقط کاپل پسر بی ال داره (بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-    answerHash:"4dbce3"
+    answer:1
 },
 
 {
-    number:"²²",
-    text:"کمپانی جی ام ام فقط کاپل پسر بی ال داره (بله یا خیر)",
+    q:"پی تیک رئیس کمپانی نورث استاره( بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-    answerHash:"4dbce3"
+    answer:0
 },
 
 {
-    number:"²³",
-    text:"پی تیک رئیس کمپانی نورث استاره( بله یا خیر)",
+    q:"فرین با شارلوت کاپل  کاری هستن(بله یا خیر)",
     options:[
         "بله",
         "خیر"
     ],
-    answerHash:"701032"
+    answer:1
 },
 
 {
-    number:"²⁴",
-    text:"فرین با شارلوت کاپل  کاری هستن(بله یا خیر)",
+    q:"اولین سریال جی ال تایلند پلاتو بود(بله یا خیر",
     options:[
         "بله",
         "خیر"
     ],
-    answerHash:"4dbce3"
-},
-
-{
-    number:"²⁵",
-    text:"اولین سریال جی ال تایلند پلاتو بود(بله یا خیر",
-    options:[
-        "بله",
-        "خیر"
-    ],
-    answerHash:"4dbce3"
+    answer:1
 }
 
 ];
 
+const startScreen = document.getElementById("startScreen");
+const quizScreen = document.getElementById("quizScreen");
+const resultScreen = document.getElementById("resultScreen");
 
-/* =====================================================
-   HASH FUNCTION
-===================================================== */
+const nameInput = document.getElementById("nameInput");
+const startBtn = document.getElementById("startBtn");
 
-function makeHash(text){
+const questionNumber = document.getElementById("questionNumber");
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const nextBtn = document.getElementById("nextBtn");
+const progress = document.getElementById("progress");
 
-    let h1 = 2166136261;
-    let h2 = 16777619;
-
-    const normalized =
-        String(text)
-        .trim()
-        .normalize("NFKC");
-
-    for(
-        let i = 0;
-        i < normalized.length;
-        i++
-    ){
-
-        const c =
-            normalized.charCodeAt(i);
-
-        h1 ^= c;
-
-        h1 =
-            Math.imul(
-                h1,
-                16777619
-            );
-
-        h1 >>>= 0;
-
-        h2 ^= c + i;
-
-        h2 =
-            Math.imul(
-                h2,
-                2246822519
-            );
-
-        h2 >>>= 0;
-    }
-
-    return (
-        h1.toString(16) +
-        h2.toString(16)
-    ).slice(0,6);
-}
-
-
-/* =====================================================
-   DOM
-===================================================== */
-
-const welcomeScreen =
-    document.getElementById("welcomeScreen");
-
-const quizScreen =
-    document.getElementById("quizScreen");
-
-const resultScreen =
-    document.getElementById("resultScreen");
-
-const nameInput =
-    document.getElementById("nameInput");
-
-const nameError =
-    document.getElementById("nameError");
-
-const startBtn =
-    document.getElementById("startBtn");
-
-const questionCounter =
-    document.getElementById("questionCounter");
-
-const questionNumber =
-    document.getElementById("questionNumber");
-
-const questionText =
-    document.getElementById("questionText");
-
-const optionsContainer =
-    document.getElementById("options");
-
-const nextBtn =
-    document.getElementById("nextBtn");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const resultUserName =
-    document.getElementById("resultUserName");
-
-const resultScore =
-    document.getElementById("resultScore");
-
-const perfectMessage =
-    document.getElementById("perfectMessage");
-
-const confetti =
-    document.getElementById("confetti");
-
-
-/* =====================================================
-   STATE
-===================================================== */
+const resultName = document.getElementById("resultName");
+const scoreEl = document.getElementById("score");
+const perfectEl = document.getElementById("perfect");
 
 let currentQuestion = 0;
-
+let selectedAnswer = null;
+let userAnswers = [];
 let userName = "";
 
-let selectedAnswers =
-    new Array(
-        questions.length
-    ).fill(null);
-
-
-/* =====================================================
-   SESSION STORAGE
-===================================================== */
-
-const STORAGE_KEY =
-    "gl_graphy_quiz_state_v3";
-
-
-function saveState(){
-
-    const state = {
-
-        userName:userName,
-
-        currentQuestion:currentQuestion,
-
-        selectedAnswers:selectedAnswers
-
-    };
-
-    try{
-
-        sessionStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(state)
-        );
-
-    }catch(error){
-
-        console.warn(
-            "Session storage unavailable."
-        );
-    }
+/*
+    فقط وضعیت موقت آزمون نگهداری می‌شود.
+    پاسخ صحیح داخل Storage ذخیره نمی‌شود.
+*/
+function saveSession(){
+    sessionStorage.setItem(
+        "gl_graphy_state",
+        JSON.stringify({
+            name:userName,
+            currentQuestion:currentQuestion,
+            answers:userAnswers
+        })
+    );
 }
 
-
-function loadState(){
-
-    try{
-
-        const raw =
-            sessionStorage.getItem(
-                STORAGE_KEY
-            );
-
-        if(!raw){
-            return false;
-        }
-
-        const state =
-            JSON.parse(raw);
-
-        if(
-            !state ||
-            typeof state !== "object"
-        ){
-            return false;
-        }
-
-        if(
-            typeof state.userName === "string"
-        ){
-
-            userName =
-                state.userName
-                .slice(0,40);
-        }
-
-        if(
-            Number.isInteger(
-                state.currentQuestion
-            ) &&
-            state.currentQuestion >= 0 &&
-            state.currentQuestion <
-            questions.length
-        ){
-
-            currentQuestion =
-                state.currentQuestion;
-        }
-
-        if(
-            Array.isArray(
-                state.selectedAnswers
-            ) &&
-            state.selectedAnswers.length ===
-            questions.length
-        ){
-
-            selectedAnswers =
-                state.selectedAnswers.map(
-                    value =>
-                        Number.isInteger(value)
-                            ? value
-                            : null
-                );
-        }
-
-        return true;
-
-    }catch(error){
-
-        return false;
-    }
+function clearSession(){
+    sessionStorage.removeItem("gl_graphy_state");
 }
 
+function showScreen(screen){
+    startScreen.classList.remove("active");
+    quizScreen.classList.remove("active");
+    resultScreen.classList.remove("active");
 
-function clearState(){
-
-    try{
-
-        sessionStorage.removeItem(
-            STORAGE_KEY
-        );
-
-    }catch(error){}
+    screen.classList.add("active");
 }
-
-
-/* =====================================================
-   NAME SANITIZATION
-===================================================== */
 
 function sanitizeName(value){
-
-    return String(value)
-
-        .replace(
-            /[\u0000-\u001F\u007F]/g,
-            ""
-        )
-
-        .replace(
-            /[<>]/g,
-            ""
-        )
-
-        .replace(
-            /\s+/g,
-            " "
-        )
-
+    return value
+        .replace(/[\u0000-\u001F\u007F]/g,"")
         .trim()
-
         .slice(0,40);
 }
 
-
-/* =====================================================
-   SCREEN
-===================================================== */
-
-function showScreen(screen){
-
-    [
-        welcomeScreen,
-        quizScreen,
-        resultScreen
-    ]
-    .forEach(
-        element =>
-            element.classList.remove(
-                "active"
-            )
-    );
-
-    screen.classList.add(
-        "active"
-    );
-}
-
-
-/* =====================================================
-   RENDER QUESTION
-===================================================== */
-
 function renderQuestion(){
 
-    const question =
-        questions[currentQuestion];
+    const item = questions[currentQuestion];
 
-    questionCounter.textContent =
-        `Question ${
-            currentQuestion + 1
-        } / ${
-            questions.length
-        }`;
+    selectedAnswer =
+        userAnswers[currentQuestion] !== undefined
+            ? userAnswers[currentQuestion]
+            : null;
 
     questionNumber.textContent =
-        question.number;
+        "Question " + (currentQuestion + 1) + " / " + questions.length;
 
-    questionText.textContent =
-        question.text;
+    questionEl.textContent = item.q;
 
-    optionsContainer.innerHTML =
-        "";
+    optionsEl.innerHTML = "";
 
-    const previousAnswer =
-        selectedAnswers[
-            currentQuestion
-        ];
+    item.options.forEach((text,index)=>{
 
-    const letters =
-        ["A","B","C","D"];
+        const button = document.createElement("button");
 
-    question.options.forEach(
-        (optionText,index)=>{
+        button.type = "button";
+        button.className = "option";
+        button.textContent = text;
 
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-            button.type =
-                "button";
-
-            button.className =
-                "option";
-
-            if(
-                previousAnswer === index
-            ){
-
-                button.classList.add(
-                    "selected"
-                );
-            }
-
-            const letter =
-                document.createElement(
-                    "span"
-                );
-
-            letter.className =
-                "option-letter";
-
-            letter.textContent =
-                letters[index];
-
-            const text =
-                document.createElement(
-                    "span"
-                );
-
-            text.textContent =
-                optionText;
-
-            button.appendChild(
-                letter
-            );
-
-            button.appendChild(
-                text
-            );
-
-            button.addEventListener(
-                "click",
-                ()=>{
-                    selectOption(index);
-                }
-            );
-
-            optionsContainer.appendChild(
-                button
-            );
+        if(selectedAnswer === index){
+            button.classList.add("selected");
         }
-    );
 
-    updateNextButton();
+        button.addEventListener("click",()=>{
+            selectOption(index);
+        });
 
-    const progress =
-        (
-            (currentQuestion + 1) /
-            questions.length
-        ) * 100;
+        optionsEl.appendChild(button);
+    });
 
-    progressBar.style.width =
-        `${progress}%`;
+    const percent =
+        ((currentQuestion + 1) / questions.length) * 100;
+
+    progress.style.width = percent + "%";
+
+    nextBtn.disabled = selectedAnswer === null;
+
+    if(currentQuestion === questions.length - 1){
+        nextBtn.textContent = "پایان آزمون 🏆";
+    }else{
+        nextBtn.textContent = "بعدی →";
+    }
 }
-
-
-/* =====================================================
-   SELECT OPTION
-===================================================== */
 
 function selectOption(index){
 
-    if(
-        !Number.isInteger(index) ||
-        index < 0 ||
-        index >=
-        questions[
-            currentQuestion
-        ].options.length
-    ){
-        return;
-    }
-
-    selectedAnswers[
-        currentQuestion
-    ] = index;
+    selectedAnswer = index;
+    userAnswers[currentQuestion] = index;
 
     const buttons =
-        optionsContainer.querySelectorAll(
-            ".option"
+        optionsEl.querySelectorAll(".option");
+
+    buttons.forEach((button,i)=>{
+        button.classList.toggle(
+            "selected",
+            i === index
         );
+    });
 
-    buttons.forEach(
-        (button,i)=>{
+    nextBtn.disabled = false;
 
-            button.classList.toggle(
-                "selected",
-                i === index
-            );
-        }
-    );
-
-    updateNextButton();
-
-    saveState();
+    saveSession();
 }
-
-
-/* =====================================================
-   NEXT BUTTON
-===================================================== */
-
-function updateNextButton(){
-
-    const selected =
-        selectedAnswers[
-            currentQuestion
-        ];
-
-    nextBtn.disabled =
-        !Number.isInteger(selected);
-
-    if(
-        currentQuestion ===
-        questions.length - 1
-    ){
-
-        nextBtn.textContent =
-            "پایان آزمون 🏆";
-
-    }else{
-
-        nextBtn.textContent =
-            "بعدی →";
-    }
-}
-
-
-nextBtn.addEventListener(
-    "click",
-    ()=>{
-
-        if(
-            !Number.isInteger(
-                selectedAnswers[
-                    currentQuestion
-                ]
-            )
-        ){
-            return;
-        }
-
-        if(
-            currentQuestion <
-            questions.length - 1
-        ){
-
-            currentQuestion++;
-
-            saveState();
-
-            renderQuestion();
-
-            window.scrollTo({
-                top:0,
-                behavior:"smooth"
-            });
-
-        }else{
-
-            finishQuiz();
-        }
-    }
-);
-
-
-/* =====================================================
-   START
-===================================================== */
-
-startBtn.addEventListener(
-    "click",
-    ()=>{
-
-        const cleaned =
-            sanitizeName(
-                nameInput.value
-            );
-
-        if(!cleaned){
-
-            nameError.textContent =
-                "لطفاً نام خود را وارد کنید.";
-
-            nameInput.focus();
-
-            return;
-        }
-
-        userName =
-            cleaned;
-
-        currentQuestion =
-            0;
-
-        selectedAnswers =
-            new Array(
-                questions.length
-            ).fill(null);
-
-        nameError.textContent =
-            "";
-
-        saveState();
-
-        showScreen(
-            quizScreen
-        );
-
-        renderQuestion();
-    }
-);
-
-
-nameInput.addEventListener(
-    "keydown",
-    event=>{
-
-        if(
-            event.key === "Enter"
-        ){
-
-            startBtn.click();
-        }
-    }
-);
-
-
-/* =====================================================
-   SCORE
-===================================================== */
 
 function calculateScore(){
 
     let correct = 0;
 
-    for(
-        let i = 0;
-        i < questions.length;
-        i++
-    ){
+    for(let i=0;i<questions.length;i++){
 
-        const selectedIndex =
-            selectedAnswers[i];
-
-        if(
-            !Number.isInteger(
-                selectedIndex
-            )
-        ){
-            continue;
-        }
-
-        const selectedText =
-            questions[i]
-            .options[
-                selectedIndex
-            ];
-
-        const calculatedHash =
-            makeHash(
-                selectedText
-            );
-
-        if(
-            calculatedHash ===
-            questions[i].answerHash
-        ){
-
+        if(userAnswers[i] === questions[i].answer){
             correct++;
         }
     }
 
-    const rawPercentage =
-        Math.round(
-            (
-                correct /
-                questions.length
-            ) * 100
-        );
+    let percentage =
+        Math.round((correct / questions.length) * 100);
 
-    return Math.max(
-        10,
-        rawPercentage
-    );
+    if(percentage < 10){
+        percentage = 10;
+    }
+
+    return {
+        correct:correct,
+        percentage:percentage
+    };
 }
-
-
-/* =====================================================
-   FINISH
-===================================================== */
 
 function finishQuiz(){
 
-    const percentage =
-        calculateScore();
-
-    resultUserName.textContent =
-        `نام کاربر: ${userName}`;
-
-    resultScore.textContent =
-        `${percentage}%`;
-
-    if(
-        percentage === 100
-    ){
-
-        perfectMessage.classList.add(
-            "show"
-        );
-
-        launchConfetti();
-
-    }else{
-
-        perfectMessage.classList.remove(
-            "show"
-        );
-    }
+    const result = calculateScore();
 
     /*
-        هیچ پاسخ صحیحی در Storage ذخیره نشده.
-        بعد از پایان، وضعیت موقت پاک می‌شود.
+        فقط نتیجه نهایی نمایش داده می‌شود.
+        هیچ جزئیاتی درباره سؤال‌های درست/غلط نمایش داده نمی‌شود.
     */
 
-    clearState();
+    resultName.textContent = userName;
+    scoreEl.textContent = result.percentage + "%";
 
-    showScreen(
-        resultScreen
-    );
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-}
-
-
-/* =====================================================
-   CONFETTI
-===================================================== */
-
-function launchConfetti(){
-
-    confetti.innerHTML =
-        "";
-
-    confetti.classList.add(
-        "show"
-    );
-
-    const pieces = 100;
-
-    for(
-        let i = 0;
-        i < pieces;
-        i++
-    ){
-
-        const piece =
-            document.createElement(
-                "div"
-            );
-
-        piece.className =
-            "confetti";
-
-        piece.style.left =
-            `${
-                Math.random() * 100
-            }%`;
-
-        piece.style.animationDelay =
-            `${
-                Math.random() * 1.2
-            }s`;
-
-        piece.style.animationDuration =
-            `${
-                2.2 +
-                Math.random() * 2
-            }s`;
-
-        piece.style.transform =
-            `rotate(${
-                Math.random() * 360
-            }deg)`;
-
-        confetti.appendChild(
-            piece
-        );
+    if(result.correct === questions.length){
+        perfectEl.classList.add("show");
+        createPerfectParticles();
+    }else{
+        perfectEl.classList.remove("show");
     }
 
-    setTimeout(
-        ()=>{
+    showScreen(resultScreen);
 
-            confetti.classList.remove(
-                "show"
-            );
-
-            confetti.innerHTML =
-                "";
-
-        },
-        5000
+    sessionStorage.setItem(
+        "gl_graphy_finished",
+        JSON.stringify({
+            name:userName,
+            score:result.percentage
+        })
     );
+
+    sessionStorage.removeItem("gl_graphy_state");
 }
 
+function createPerfectParticles(){
 
-/* =====================================================
-   RESTORE SESSION
-===================================================== */
+    for(let i=0;i<22;i++){
 
-(function restoreSession(){
+        const p = document.createElement("div");
 
-    const restored =
-        loadState();
+        p.textContent =
+            i % 2 === 0 ? "💗" : "✨";
 
-    if(!restored){
+        p.style.position = "fixed";
+        p.style.left = Math.random()*100 + "vw";
+        p.style.top = "-30px";
+        p.style.fontSize =
+            (14 + Math.random()*18) + "px";
+        p.style.zIndex = "10";
+        p.style.pointerEvents = "none";
+        p.style.animation =
+            "perfectFall " +
+            (2 + Math.random()*3) +
+            "s linear forwards";
+
+        document.body.appendChild(p);
+
+        setTimeout(()=>{
+            p.remove();
+        },5500);
+    }
+}
+
+const style = document.createElement("style");
+
+style.textContent = `
+@keyframes perfectFall{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+`;
+
+document.head.appendChild(style);
+
+startBtn.addEventListener("click",()=>{
+
+    userName = sanitizeName(nameInput.value);
+
+    if(!userName){
+        nameInput.focus();
+        nameInput.style.borderColor = "#ff167f";
+
+        setTimeout(()=>{
+            nameInput.style.borderColor = "";
+        },700);
+
         return;
     }
 
-    if(userName){
+    currentQuestion = 0;
+    selectedAnswer = null;
+    userAnswers = [];
 
-        nameInput.value =
-            userName;
+    saveSession();
 
-        showScreen(
-            quizScreen
-        );
+    showScreen(quizScreen);
+    renderQuestion();
+});
 
+nameInput.addEventListener("keydown",(event)=>{
+    if(event.key === "Enter"){
+        startBtn.click();
+    }
+});
+
+nextBtn.addEventListener("click",()=>{
+
+    if(selectedAnswer === null){
+        return;
+    }
+
+    /*
+        هیچ بررسی درست/غلطی اینجا انجام نمی‌شود.
+        فقط پاسخ انتخاب‌شده ذخیره موقت می‌شود.
+    */
+
+    if(currentQuestion < questions.length - 1){
+
+        currentQuestion++;
+        selectedAnswer =
+            userAnswers[currentQuestion] !== undefined
+                ? userAnswers[currentQuestion]
+                : null;
+
+        saveSession();
         renderQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }else{
+
+        finishQuiz();
+    }
+});
+
+/*
+    بازیابی وضعیت موقت آزمون بعد از Refresh
+*/
+(function restoreSession(){
+
+    try{
+
+        const finished =
+            sessionStorage.getItem("gl_graphy_finished");
+
+        if(finished){
+
+            const data = JSON.parse(finished);
+
+            userName =
+                typeof data.name === "string"
+                    ? data.name
+                    : "";
+
+            resultName.textContent = userName;
+            scoreEl.textContent =
+                Number(data.score) + "%";
+
+            if(Number(data.score) === 100){
+                perfectEl.classList.add("show");
+            }
+
+            showScreen(resultScreen);
+            return;
+        }
+
+        const saved =
+            sessionStorage.getItem("gl_graphy_state");
+
+        if(!saved){
+            return;
+        }
+
+        const data = JSON.parse(saved);
+
+        if(
+            typeof data.name !== "string" ||
+            !Array.isArray(data.answers)
+        ){
+            return;
+        }
+
+        userName = sanitizeName(data.name);
+
+        currentQuestion =
+            Math.max(
+                0,
+                Math.min(
+                    Number(data.currentQuestion) || 0,
+                    questions.length - 1
+                )
+            );
+
+        userAnswers = data.answers;
+
+        showScreen(quizScreen);
+        renderQuestion();
+
+    }catch(error){
+
+        sessionStorage.removeItem("gl_graphy_state");
+        sessionStorage.removeItem("gl_graphy_finished");
     }
 
 })();
-
-
-/* =====================================================
-   REFRESH PROTECTION
-===================================================== */
-
-window.addEventListener(
-    "beforeunload",
-    ()=>{
-
-        if(
-            quizScreen.classList.contains(
-                "active"
-            )
-        ){
-
-            saveState();
-        }
-    }
-);
-
-
-/* =====================================================
-   END
-===================================================== */
-
 </script>
 
 </body>
-        </html>
+            </html>
