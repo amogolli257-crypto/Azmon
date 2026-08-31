@@ -15,28 +15,26 @@
 
 :root{
     --pink:#ff2f92;
-    --hot:#ff006e;
+    --pink2:#ff72b5;
     --red:#d90429;
-    --dark:#170009;
+    --dark:#160007;
     --white:#fff;
-    --soft:#ffd9e9;
+    --soft:#ffd8e8;
 }
 
-html{
+html,body{
     min-height:100%;
 }
 
 body{
     min-height:100vh;
-    color:var(--white);
+    color:#fff;
     font-family:Tahoma,Arial,sans-serif;
-    overflow-x:hidden;
     background:
-        radial-gradient(circle at 10% 10%,rgba(255,0,110,.4),transparent 30%),
-        radial-gradient(circle at 90% 90%,rgba(217,4,41,.45),transparent 32%),
-        radial-gradient(circle at 50% 50%,rgba(255,47,146,.08),transparent 45%),
-        linear-gradient(135deg,#150008,#450015,#21000d,#100006);
-    background-attachment:fixed;
+        radial-gradient(circle at 10% 10%,rgba(255,0,110,.35),transparent 30%),
+        radial-gradient(circle at 90% 90%,rgba(217,4,41,.4),transparent 32%),
+        linear-gradient(135deg,#130006,#420012,#220009,#100004);
+    overflow-x:hidden;
 }
 
 .background{
@@ -54,46 +52,43 @@ body{
     opacity:.35;
 }
 
-.glow.one{
-    width:220px;
-    height:220px;
+.glow1{
+    width:250px;
+    height:250px;
     background:#ff006e;
-    top:-70px;
-    left:-70px;
-    animation:glow1 8s ease-in-out infinite alternate;
+    top:-80px;
+    left:-80px;
+    animation:g1 8s infinite alternate ease-in-out;
 }
 
-.glow.two{
-    width:280px;
-    height:280px;
+.glow2{
+    width:300px;
+    height:300px;
     background:#d90429;
-    right:-80px;
+    right:-100px;
     bottom:-100px;
-    animation:glow2 10s ease-in-out infinite alternate;
+    animation:g2 10s infinite alternate ease-in-out;
 }
 
-.glow.three{
+.glow3{
     width:180px;
     height:180px;
-    background:#ff2f92;
+    background:#ff4fa3;
     top:45%;
     left:45%;
     opacity:.12;
-    animation:pulse 5s ease-in-out infinite;
+    animation:pulse 5s infinite ease-in-out;
 }
 
-@keyframes glow1{
-    from{transform:translate(0,0)}
+@keyframes g1{
     to{transform:translate(100px,80px)}
 }
 
-@keyframes glow2{
-    from{transform:translate(0,0)}
+@keyframes g2{
     to{transform:translate(-100px,-80px)}
 }
 
 @keyframes pulse{
-    0%,100%{transform:scale(1)}
     50%{transform:scale(1.5)}
 }
 
@@ -103,31 +98,29 @@ body{
     height:4px;
     border-radius:50%;
     background:#fff;
-    box-shadow:0 0 12px #ff4fa3;
+    box-shadow:0 0 14px #ff4fa3;
     opacity:.45;
-    animation:float 8s ease-in-out infinite;
+    animation:float 7s infinite ease-in-out;
 }
 
 .p1{left:5%;top:15%}
-.p2{left:13%;top:70%;animation-delay:2s}
-.p3{left:25%;top:35%;animation-delay:4s}
-.p4{left:37%;top:80%;animation-delay:1s}
-.p5{left:48%;top:20%;animation-delay:3s}
+.p2{left:13%;top:70%;animation-delay:1s}
+.p3{left:25%;top:35%;animation-delay:2s}
+.p4{left:37%;top:80%;animation-delay:3s}
+.p5{left:48%;top:20%;animation-delay:4s}
 .p6{left:61%;top:65%;animation-delay:5s}
 .p7{left:73%;top:30%;animation-delay:2s}
 .p8{left:85%;top:75%;animation-delay:4s}
-.p9{left:94%;top:18%;animation-delay:6s}
-.p10{left:54%;top:90%;animation-delay:2s}
-.p11{left:30%;top:8%;animation-delay:5s}
-.p12{left:78%;top:52%;animation-delay:1s}
+.p9{left:94%;top:18%;animation-delay:5s}
+.p10{left:54%;top:90%;animation-delay:3s}
 
 @keyframes float{
     0%,100%{
-        transform:translateY(0) scale(1);
+        transform:translateY(0);
         opacity:.2;
     }
     50%{
-        transform:translateY(-35px) scale(1.7);
+        transform:translateY(-35px) scale(1.6);
         opacity:.8;
     }
 }
@@ -146,13 +139,13 @@ body{
 }
 
 .logo{
-    font-size:clamp(42px,10vw,80px);
+    font-size:clamp(44px,10vw,80px);
     font-weight:900;
     letter-spacing:2px;
     background:linear-gradient(
         90deg,
         #fff,
-        #ff8cc5,
+        #ff7fba,
         #ff006e,
         #fff
     );
@@ -161,18 +154,18 @@ body{
     background-clip:text;
     color:transparent;
     animation:
-        logoGradient 5s linear infinite,
-        logoGlow 2.5s ease-in-out infinite alternate;
+        gradientMove 5s linear infinite,
+        logoGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes logoGradient{
+@keyframes gradientMove{
     from{background-position:0 center}
     to{background-position:250% center}
 }
 
 @keyframes logoGlow{
     from{
-        filter:drop-shadow(0 0 5px rgba(255,47,146,.5));
+        filter:drop-shadow(0 0 5px rgba(255,47,146,.4));
     }
     to{
         filter:drop-shadow(0 0 25px rgba(255,0,110,.9));
@@ -182,7 +175,7 @@ body{
 .subtitle{
     color:var(--soft);
     font-size:clamp(13px,3vw,18px);
-    line-height:1.8;
+    line-height:1.9;
     margin-top:5px;
 }
 
@@ -194,25 +187,25 @@ body{
             rgba(255,255,255,.035)
         );
     border:1px solid rgba(255,255,255,.18);
-    border-radius:28px;
     box-shadow:
         0 25px 70px rgba(0,0,0,.45),
         inset 0 1px rgba(255,255,255,.15),
-        0 0 40px rgba(255,0,110,.10);
+        0 0 40px rgba(255,0,110,.1);
     backdrop-filter:blur(20px);
     -webkit-backdrop-filter:blur(20px);
+    border-radius:28px;
 }
 
 .screen{
     display:none;
-    animation:screenIn .5s ease;
+    animation:appear .45s ease;
 }
 
 .screen.active{
     display:block;
 }
 
-@keyframes screenIn{
+@keyframes appear{
     from{
         opacity:0;
         transform:translateY(20px) scale(.98);
@@ -223,19 +216,21 @@ body{
     }
 }
 
+/* START */
+
 .start-card{
     max-width:650px;
     margin:35px auto;
-    padding:32px;
+    padding:35px;
     text-align:center;
 }
 
 .start-title{
-    font-size:clamp(26px,6vw,42px);
+    font-size:clamp(27px,6vw,43px);
     margin-bottom:15px;
     text-shadow:
-        0 0 12px rgba(255,47,146,.7),
-        0 0 30px rgba(255,0,110,.3);
+        0 0 15px rgba(255,47,146,.8),
+        0 0 35px rgba(255,0,110,.3);
 }
 
 .start-text{
@@ -246,19 +241,19 @@ body{
 
 .name-input{
     width:100%;
+    padding:17px;
+    border-radius:17px;
     border:1px solid rgba(255,255,255,.18);
     outline:none;
-    border-radius:17px;
-    padding:17px 18px;
-    color:#fff;
     background:rgba(0,0,0,.25);
-    font-size:17px;
+    color:#fff;
     font-family:inherit;
+    font-size:17px;
     transition:.3s;
 }
 
 .name-input::placeholder{
-    color:#d5a8ba;
+    color:#d4a4b8;
 }
 
 .name-input:focus{
@@ -269,15 +264,15 @@ body{
 .main-btn{
     width:100%;
     margin-top:18px;
-    padding:16px 20px;
-    border:none;
+    padding:16px;
+    border:0;
     border-radius:17px;
     color:#fff;
-    font-size:17px;
+    background:linear-gradient(135deg,#ff006e,#d90429);
     font-family:inherit;
+    font-size:17px;
     font-weight:bold;
     cursor:pointer;
-    background:linear-gradient(135deg,#ff006e,#d90429);
     box-shadow:0 10px 30px rgba(255,0,110,.28);
     transition:.25s;
 }
@@ -297,6 +292,8 @@ body{
     transform:none;
     box-shadow:none;
 }
+
+/* QUIZ */
 
 .quiz-card{
     padding:30px;
@@ -331,14 +328,13 @@ body{
     border-radius:100px;
     background:linear-gradient(90deg,#ff006e,#ff70b3);
     box-shadow:0 0 15px #ff167f;
-    transition:width .45s ease;
+    transition:width .4s ease;
 }
 
 .question{
     font-size:clamp(19px,4.5vw,29px);
     line-height:2;
     margin-bottom:25px;
-    color:#fff;
 }
 
 .options{
@@ -349,25 +345,21 @@ body{
 
 .option{
     width:100%;
-    padding:17px 18px;
+    padding:17px;
     border:1px solid rgba(255,255,255,.15);
     border-radius:17px;
-    background:rgba(0,0,0,.20);
+    background:rgba(0,0,0,.2);
     color:#fff;
     font-family:inherit;
     font-size:16px;
     line-height:1.8;
     text-align:right;
     cursor:pointer;
-    transition:
-        background .25s,
-        border-color .25s,
-        transform .25s,
-        box-shadow .25s;
+    transition:.25s;
 }
 
 .option:hover{
-    background:rgba(255,47,146,.10);
+    background:rgba(255,47,146,.1);
     border-color:rgba(255,105,175,.45);
     transform:translateX(-3px);
 }
@@ -381,9 +373,7 @@ body{
     transform:scale(1.01);
 }
 
-.next-area{
-    margin-top:25px;
-}
+/* RESULT */
 
 .result-card{
     max-width:680px;
@@ -394,8 +384,7 @@ body{
 
 .result-icon{
     font-size:65px;
-    margin-bottom:8px;
-    animation:trophy 1.5s ease-in-out infinite alternate;
+    animation:trophy 1.5s infinite alternate ease-in-out;
 }
 
 @keyframes trophy{
@@ -406,10 +395,10 @@ body{
 .result-title{
     font-size:clamp(27px,6vw,42px);
     line-height:1.7;
+    margin-bottom:12px;
     text-shadow:
         0 0 15px rgba(255,47,146,.8),
         0 0 35px rgba(255,0,110,.3);
-    margin-bottom:15px;
 }
 
 .result-logo{
@@ -427,27 +416,25 @@ body{
 .score-label{
     margin-top:15px;
     color:#ffd1e3;
-    font-size:17px;
 }
 
 .score{
     font-size:clamp(65px,16vw,105px);
-    line-height:1.15;
     font-weight:900;
+    line-height:1.2;
     background:linear-gradient(180deg,#fff,#ff61aa);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
     filter:drop-shadow(0 0 18px rgba(255,0,110,.5));
-    margin:4px 0 15px;
 }
 
 .saved-message{
     margin-top:20px;
     padding:17px;
     border-radius:17px;
-    background:rgba(255,47,146,.10);
-    border:1px solid rgba(255,111,177,.20);
+    background:rgba(255,47,146,.1);
+    border:1px solid rgba(255,111,177,.2);
     color:#ffd7e8;
     line-height:2;
     font-size:15px;
@@ -457,7 +444,6 @@ body{
     margin-top:18px;
     color:#ffd4e6;
     line-height:2;
-    font-size:16px;
 }
 
 .already-badge{
@@ -466,15 +452,8 @@ body{
     padding:10px 18px;
     border-radius:100px;
     color:#fff;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,47,146,.25),
-            rgba(217,4,41,.25)
-        );
+    background:rgba(255,47,146,.18);
     border:1px solid rgba(255,130,190,.3);
-    box-shadow:0 0 20px rgba(255,0,110,.15);
-    font-size:14px;
 }
 
 .perfect{
@@ -482,8 +461,7 @@ body{
     margin-top:20px;
     font-size:25px;
     font-weight:bold;
-    color:#fff;
-    animation:perfectGlow 1s ease-in-out infinite alternate;
+    animation:perfectGlow 1s infinite alternate;
 }
 
 .perfect.show{
@@ -496,7 +474,7 @@ body{
         text-shadow:0 0 8px #ff2f92;
     }
     to{
-        transform:scale(1.07);
+        transform:scale(1.08);
         text-shadow:
             0 0 10px #fff,
             0 0 25px #ff2f92,
@@ -504,17 +482,17 @@ body{
     }
 }
 
-.perfect-particle{
+.confetti{
     position:fixed;
     top:-40px;
     z-index:100;
     pointer-events:none;
-    animation:perfectFall linear forwards;
+    animation:fall linear forwards;
 }
 
-@keyframes perfectFall{
+@keyframes fall{
     from{
-        transform:translateY(0) rotate(0deg);
+        transform:translateY(0) rotate(0);
         opacity:1;
     }
     to{
@@ -530,16 +508,8 @@ body{
         padding-top:12px;
     }
 
-    .header{
-        margin-bottom:15px;
-    }
-
-    .glass{
-        border-radius:23px;
-    }
-
     .start-card{
-        padding:23px 17px;
+        padding:24px 17px;
         margin:20px auto;
     }
 
@@ -554,17 +524,13 @@ body{
 
     .question{
         font-size:19px;
-        line-height:2;
     }
 
     .option{
         font-size:15px;
-        padding:14px 13px;
+        padding:14px;
     }
 
-    .main-btn{
-        font-size:16px;
-    }
 }
 </style>
 </head>
@@ -573,9 +539,9 @@ body{
 
 <div class="background">
 
-    <div class="glow one"></div>
-    <div class="glow two"></div>
-    <div class="glow three"></div>
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
 
     <span class="particle p1"></span>
     <span class="particle p2"></span>
@@ -587,8 +553,6 @@ body{
     <span class="particle p8"></span>
     <span class="particle p9"></span>
     <span class="particle p10"></span>
-    <span class="particle p11"></span>
-    <span class="particle p12"></span>
 
 </div>
 
@@ -606,6 +570,8 @@ body{
 
 </header>
 
+
+<!-- START SCREEN -->
 
 <section id="startScreen" class="screen active">
 
@@ -640,6 +606,8 @@ body{
 </section>
 
 
+<!-- QUIZ SCREEN -->
+
 <section id="quizScreen" class="screen">
 
     <div class="glass quiz-card">
@@ -673,22 +641,20 @@ body{
             class="options">
         </div>
 
-        <div class="next-area">
-
-            <button
-                id="nextBtn"
-                class="main-btn"
-                type="button"
-                disabled>
-                بعدی →
-            </button>
-
-        </div>
+        <button
+            id="nextBtn"
+            class="main-btn"
+            type="button"
+            disabled>
+            بعدی →
+        </button>
 
     </div>
 
 </section>
 
+
+<!-- RESULT SCREEN -->
 
 <section id="resultScreen" class="screen">
 
@@ -715,7 +681,9 @@ body{
             امتیاز نهایی:
         </div>
 
-        <div id="score" class="score">
+        <div
+            id="score"
+            class="score">
             10%
         </div>
 
@@ -746,6 +714,19 @@ body{
 
 <script>
 "use strict";
+
+
+/*
+    تعداد سؤال‌ها: 24
+
+    سؤال تکراری پزشک حذف شده است.
+
+    سؤال 10:
+    اسم یه بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟
+
+    پاسخ صحیح سؤال 10 = گزینه 1
+*/
+
 
 const questions = [
 
@@ -848,7 +829,7 @@ options:[
 answer:1
 },
 
-/* سؤال ۱۰ اصلاح‌شده */
+/* QUESTION 10 — اصلاح شده و مفرد */
 
 {
 q:"اسم یه بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
@@ -1008,6 +989,8 @@ answer:1
 ];
 
 
+const TOTAL = questions.length;
+
 const startScreen =
 document.getElementById("startScreen");
 
@@ -1026,6 +1009,9 @@ document.getElementById("startBtn");
 const questionNumber =
 document.getElementById("questionNumber");
 
+const progress =
+document.getElementById("progress");
+
 const questionElement =
 document.getElementById("question");
 
@@ -1034,9 +1020,6 @@ document.getElementById("options");
 
 const nextBtn =
 document.getElementById("nextBtn");
-
-const progress =
-document.getElementById("progress");
 
 const resultName =
 document.getElementById("resultName");
@@ -1048,11 +1031,16 @@ const perfectElement =
 document.getElementById("perfect");
 
 
+/*
+    این کلید فقط مشخص می‌کند آزمون قبلاً
+    در همین مرورگر تمام شده است.
+*/
+
 const FINISHED_KEY =
-"gl_graphy_exam_finished_v3";
+"gl_graphy_finished_v5";
 
 const SESSION_KEY =
-"gl_graphy_exam_session_v3";
+"gl_graphy_session_v5";
 
 
 let currentQuestion = 0;
@@ -1063,602 +1051,643 @@ let userName = "";
 
 function sanitizeName(value){
 
-return String(value)
-.replace(/[\u0000-\u001F\u007F]/g,"")
-.trim()
-.slice(0,40);
+    return String(value)
+        .replace(/[\u0000-\u001F\u007F]/g,"")
+        .trim()
+        .slice(0,40);
 
 }
 
 
 function showScreen(screen){
 
-startScreen.classList.remove("active");
-quizScreen.classList.remove("active");
-resultScreen.classList.remove("active");
+    startScreen.classList.remove("active");
+    quizScreen.classList.remove("active");
+    resultScreen.classList.remove("active");
 
-screen.classList.add("active");
+    screen.classList.add("active");
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
 function saveSession(){
 
-try{
+    try{
 
-sessionStorage.setItem(
-SESSION_KEY,
-JSON.stringify({
-name:userName,
-currentQuestion:currentQuestion,
-answers:userAnswers
-})
-);
+        sessionStorage.setItem(
+            SESSION_KEY,
+            JSON.stringify({
+                name:userName,
+                currentQuestion:currentQuestion,
+                answers:userAnswers
+            })
+        );
 
-}catch(error){}
+    }catch(error){}
 
 }
 
 
 function clearSession(){
 
-try{
-sessionStorage.removeItem(SESSION_KEY);
-}catch(error){}
+    try{
+        sessionStorage.removeItem(SESSION_KEY);
+    }catch(error){}
 
 }
 
 
 function saveFinishedResult(score){
 
-try{
+    try{
 
-localStorage.setItem(
-FINISHED_KEY,
-JSON.stringify({
-finished:true,
-name:userName,
-score:score
-})
-);
+        localStorage.setItem(
+            FINISHED_KEY,
+            JSON.stringify({
+                finished:true,
+                name:userName,
+                score:Number(score)
+            })
+        );
 
-}catch(error){}
+    }catch(error){}
 
 }
 
 
 function getFinishedResult(){
 
-try{
+    try{
 
-const saved =
-localStorage.getItem(FINISHED_KEY);
+        const saved =
+            localStorage.getItem(FINISHED_KEY);
 
-if(!saved){
-return null;
-}
+        if(!saved){
+            return null;
+        }
 
-const data =
-JSON.parse(saved);
+        const data =
+            JSON.parse(saved);
 
-if(
-data &&
-data.finished === true &&
-typeof data.name === "string" &&
-typeof data.score === "number"
-){
+        if(
+            data &&
+            data.finished === true &&
+            typeof data.name === "string" &&
+            typeof data.score === "number"
+        ){
 
-return data;
+            return data;
 
-}
+        }
 
-}catch(error){}
+    }catch(error){}
 
-return null;
+    return null;
 
 }
 
 
 function renderQuestion(){
 
-const item =
-questions[currentQuestion];
+    const item =
+        questions[currentQuestion];
 
-selectedAnswer =
-userAnswers[currentQuestion] !== undefined
-? userAnswers[currentQuestion]
-: null;
-
-
-questionNumber.textContent =
-"Question " +
-(currentQuestion + 1) +
-" / " +
-questions.length;
+    selectedAnswer =
+        userAnswers[currentQuestion] !== undefined
+        ? userAnswers[currentQuestion]
+        : null;
 
 
-questionElement.textContent =
-item.q;
+    questionNumber.textContent =
+        "Question " +
+        (currentQuestion + 1) +
+        " / " +
+        TOTAL;
 
 
-optionsElement.innerHTML = "";
+    questionElement.textContent =
+        item.q;
 
 
-item.options.forEach(
-function(text,index){
-
-const button =
-document.createElement("button");
-
-button.type = "button";
-button.className = "option";
-button.textContent = text;
+    optionsElement.innerHTML = "";
 
 
-if(
-selectedAnswer !== null &&
-selectedAnswer === index
-){
+    item.options.forEach(
+        function(text,index){
 
-button.classList.add("selected");
+            const button =
+                document.createElement("button");
 
-}
+            button.type = "button";
 
+            button.className =
+                "option";
 
-button.addEventListener(
-"click",
-function(){
-
-selectOption(index);
-
-}
-);
+            button.textContent =
+                text;
 
 
-optionsElement.appendChild(button);
+            if(
+                selectedAnswer !== null &&
+                selectedAnswer === index
+            ){
 
-}
-);
+                button.classList.add("selected");
 
-
-progress.style.width =
-(
-((currentQuestion + 1) /
-questions.length) * 100
-) + "%";
+            }
 
 
-nextBtn.disabled =
-selectedAnswer === null;
+            button.addEventListener(
+                "click",
+                function(){
+
+                    selectOption(index);
+
+                }
+            );
 
 
-if(
-currentQuestion ===
-questions.length - 1
-){
+            optionsElement.appendChild(button);
 
-nextBtn.textContent =
-"پایان آزمون 🏆";
+        }
+    );
 
-}else{
 
-nextBtn.textContent =
-"بعدی →";
+    progress.style.width =
+        (
+            ((currentQuestion + 1) / TOTAL) * 100
+        ) + "%";
 
-}
+
+    nextBtn.disabled =
+        selectedAnswer === null;
+
+
+    if(
+        currentQuestion === TOTAL - 1
+    ){
+
+        nextBtn.textContent =
+            "پایان آزمون 🏆";
+
+    }else{
+
+        nextBtn.textContent =
+            "بعدی →";
+
+    }
 
 }
 
 
 function selectOption(index){
 
-selectedAnswer = index;
+    selectedAnswer = index;
 
-userAnswers[currentQuestion] =
-index;
-
-
-const buttons =
-optionsElement.querySelectorAll(".option");
+    userAnswers[currentQuestion] =
+        index;
 
 
-buttons.forEach(
-function(button,i){
-
-button.classList.toggle(
-"selected",
-i === index
-);
-
-}
-);
+    const buttons =
+        optionsElement.querySelectorAll(".option");
 
 
-nextBtn.disabled = false;
+    buttons.forEach(
+        function(button,i){
 
-saveSession();
+            button.classList.toggle(
+                "selected",
+                i === index
+            );
+
+        }
+    );
+
+
+    /*
+        هیچ بررسی درست یا غلطی اینجا انجام نمی‌شود.
+        فقط گزینه انتخاب‌شده مشخص می‌شود.
+    */
+
+
+    nextBtn.disabled = false;
+
+    saveSession();
 
 }
 
 
 function calculateScore(){
 
-let correctCount = 0;
+    let correctCount = 0;
 
 
-for(
-let i=0;
-i<questions.length;
-i++
-){
+    for(
+        let i=0;
+        i<TOTAL;
+        i++
+    ){
 
-if(
-userAnswers[i] ===
-questions[i].answer
-){
+        if(
+            userAnswers[i] ===
+            questions[i].answer
+        ){
 
-correctCount++;
+            correctCount++;
 
-}
+        }
 
-}
-
-
-let percentage =
-Math.round(
-(correctCount /
-questions.length) * 100
-);
+    }
 
 
-if(percentage < 10){
-percentage = 10;
-}
-
-if(percentage > 100){
-percentage = 100;
-}
+    let percentage =
+        Math.round(
+            (correctCount / TOTAL) * 100
+        );
 
 
-return {
-correct:correctCount,
-percentage:percentage
-};
-
-}
+    if(percentage < 10){
+        percentage = 10;
+    }
 
 
-function createPerfectParticles(){
-
-const symbols = [
-"💗",
-"💖",
-"💕",
-"✨",
-"👑"
-];
+    if(percentage > 100){
+        percentage = 100;
+    }
 
 
-for(let i=0;i<28;i++){
-
-const particle =
-document.createElement("div");
-
-particle.className =
-"perfect-particle";
-
-particle.textContent =
-symbols[
-Math.floor(
-Math.random() *
-symbols.length
-)
-];
-
-particle.style.left =
-Math.random() * 100 + "vw";
-
-particle.style.fontSize =
-(14 + Math.random() * 20) + "px";
-
-particle.style.animationDuration =
-(2 + Math.random() * 3) + "s";
-
-
-document.body.appendChild(
-particle
-);
-
-
-setTimeout(
-function(){
-particle.remove();
-},
-5500
-);
+    return {
+        correct:correctCount,
+        percentage:percentage
+    };
 
 }
+
+
+function createPerfectEffect(){
+
+    const symbols = [
+        "💗",
+        "💖",
+        "💕",
+        "✨",
+        "👑"
+    ];
+
+
+    for(
+        let i=0;
+        i<30;
+        i++
+    ){
+
+        const item =
+            document.createElement("div");
+
+        item.className =
+            "confetti";
+
+        item.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        item.style.left =
+            Math.random() * 100 + "vw";
+
+
+        item.style.fontSize =
+            (14 + Math.random() * 20) + "px";
+
+
+        item.style.animationDuration =
+            (2 + Math.random() * 3) + "s";
+
+
+        document.body.appendChild(item);
+
+
+        setTimeout(
+            function(){
+
+                item.remove();
+
+            },
+            5500
+        );
+
+    }
 
 }
 
 
 function finishQuiz(){
 
-const result =
-calculateScore();
+    const result =
+        calculateScore();
 
 
-resultName.textContent =
-userName;
+    resultName.textContent =
+        userName;
 
 
-scoreElement.textContent =
-result.percentage + "%";
+    scoreElement.textContent =
+        result.percentage + "%";
 
 
-if(
-result.correct ===
-questions.length
-){
+    if(
+        result.correct === TOTAL
+    ){
 
-perfectElement.classList.add("show");
+        perfectElement.classList.add("show");
 
-createPerfectParticles();
+        createPerfectEffect();
 
-}else{
+    }else{
 
-perfectElement.classList.remove("show");
+        perfectElement.classList.remove("show");
 
-}
+    }
 
 
-saveFinishedResult(
-result.percentage
-);
+    /*
+        نتیجه فقط بعد از پایان آزمون ذخیره می‌شود.
+    */
 
-clearSession();
+    saveFinishedResult(
+        result.percentage
+    );
 
-showScreen(resultScreen);
+
+    clearSession();
+
+
+    showScreen(resultScreen);
 
 }
 
 
 function showSavedResult(data){
 
-userName =
-sanitizeName(data.name);
-
-resultName.textContent =
-userName;
-
-scoreElement.textContent =
-data.score + "%";
+    userName =
+        sanitizeName(data.name);
 
 
-if(Number(data.score) === 100){
-
-perfectElement.classList.add("show");
-
-}else{
-
-perfectElement.classList.remove("show");
-
-}
+    resultName.textContent =
+        userName;
 
 
-showScreen(resultScreen);
+    scoreElement.textContent =
+        data.score + "%";
+
+
+    if(
+        Number(data.score) === 100
+    ){
+
+        perfectElement.classList.add("show");
+
+    }else{
+
+        perfectElement.classList.remove("show");
+
+    }
+
+
+    showScreen(resultScreen);
 
 }
 
 
 startBtn.addEventListener(
-"click",
-function(){
+    "click",
+    function(){
 
-const finished =
-getFinishedResult();
+        /*
+            اگر قبلاً آزمون تمام شده باشد،
+            اجازه شروع دوباره داده نمی‌شود.
+        */
 
-
-if(finished){
-
-showSavedResult(finished);
-
-return;
-
-}
+        const finished =
+            getFinishedResult();
 
 
-userName =
-sanitizeName(
-nameInput.value
-);
+        if(finished){
+
+            showSavedResult(finished);
+
+            return;
+
+        }
 
 
-if(!userName){
-
-nameInput.focus();
-
-nameInput.style.borderColor =
-"#ff167f";
-
-setTimeout(
-function(){
-
-nameInput.style.borderColor =
-"";
-
-},
-800
-);
-
-return;
-
-}
+        userName =
+            sanitizeName(
+                nameInput.value
+            );
 
 
-currentQuestion = 0;
-selectedAnswer = null;
-userAnswers = [];
+        if(!userName){
 
-saveSession();
+            nameInput.focus();
 
-showScreen(quizScreen);
+            nameInput.style.borderColor =
+                "#ff167f";
 
-renderQuestion();
 
-}
+            setTimeout(
+                function(){
+
+                    nameInput.style.borderColor =
+                        "";
+
+                },
+                800
+            );
+
+
+            return;
+
+        }
+
+
+        currentQuestion = 0;
+
+        selectedAnswer = null;
+
+        userAnswers = [];
+
+
+        saveSession();
+
+
+        showScreen(quizScreen);
+
+        renderQuestion();
+
+    }
 );
 
 
 nameInput.addEventListener(
-"keydown",
-function(event){
+    "keydown",
+    function(event){
 
-if(event.key === "Enter"){
+        if(event.key === "Enter"){
 
-startBtn.click();
+            startBtn.click();
 
-}
+        }
 
-}
+    }
 );
 
 
 nextBtn.addEventListener(
-"click",
-function(){
+    "click",
+    function(){
 
-if(selectedAnswer === null){
-return;
-}
+        if(selectedAnswer === null){
+            return;
+        }
 
 
-if(
-currentQuestion <
-questions.length - 1
-){
+        if(
+            currentQuestion <
+            TOTAL - 1
+        ){
 
-currentQuestion++;
+            currentQuestion++;
 
-selectedAnswer =
-userAnswers[currentQuestion] !== undefined
-? userAnswers[currentQuestion]
-: null;
+            selectedAnswer =
+                userAnswers[currentQuestion] !== undefined
+                ? userAnswers[currentQuestion]
+                : null;
 
-saveSession();
 
-renderQuestion();
+            saveSession();
 
-}else{
+            renderQuestion();
 
-finishQuiz();
+        }else{
 
-}
+            finishQuiz();
 
-}
+        }
+
+    }
 );
 
 
-function restoreState(){
+/*
+    بازیابی وضعیت موقت در صورت Refresh.
+*/
 
-const finished =
-getFinishedResult();
+function restoreSession(){
+
+    /*
+        اول بررسی می‌کنیم آزمون قبلاً
+        به پایان رسیده یا نه.
+    */
+
+    const finished =
+        getFinishedResult();
 
 
-if(finished){
+    if(finished){
 
-showSavedResult(finished);
+        showSavedResult(finished);
 
-return;
+        return;
+
+    }
+
+
+    try{
+
+        const saved =
+            sessionStorage.getItem(
+                SESSION_KEY
+            );
+
+
+        if(!saved){
+            return;
+        }
+
+
+        const data =
+            JSON.parse(saved);
+
+
+        if(
+            !data ||
+            typeof data.name !== "string" ||
+            !Array.isArray(data.answers)
+        ){
+
+            clearSession();
+
+            return;
+
+        }
+
+
+        userName =
+            sanitizeName(data.name);
+
+
+        currentQuestion =
+            Number(data.currentQuestion);
+
+
+        if(
+            !Number.isInteger(currentQuestion)
+        ){
+
+            currentQuestion = 0;
+
+        }
+
+
+        if(currentQuestion < 0){
+            currentQuestion = 0;
+        }
+
+
+        if(currentQuestion >= TOTAL){
+            currentQuestion = TOTAL - 1;
+        }
+
+
+        userAnswers =
+            data.answers;
+
+
+        showScreen(quizScreen);
+
+        renderQuestion();
+
+
+    }catch(error){
+
+        clearSession();
+
+    }
 
 }
 
 
-try{
-
-const saved =
-sessionStorage.getItem(
-SESSION_KEY
-);
-
-
-if(!saved){
-return;
-}
-
-
-const data =
-JSON.parse(saved);
-
-
-if(
-!data ||
-typeof data.name !== "string" ||
-!Array.isArray(data.answers)
-){
-
-return;
-
-}
-
-
-userName =
-sanitizeName(data.name);
-
-
-currentQuestion =
-Number(data.currentQuestion);
-
-
-if(
-!Number.isInteger(currentQuestion)
-){
-
-currentQuestion = 0;
-
-}
-
-
-if(currentQuestion < 0){
-currentQuestion = 0;
-}
-
-
-if(
-currentQuestion >=
-questions.length
-){
-
-currentQuestion =
-questions.length - 1;
-
-}
-
-
-userAnswers =
-data.answers;
-
-
-showScreen(quizScreen);
-
-renderQuestion();
-
-
-}catch(error){
-
-clearSession();
-
-}
-
-}
-
-
-restoreState();
+restoreSession();
 
 </script>
 
