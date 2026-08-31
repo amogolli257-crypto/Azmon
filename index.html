@@ -24,13 +24,12 @@
 
 html{
     min-height:100%;
-    scroll-behavior:smooth;
 }
 
 body{
     min-height:100vh;
-    font-family:Tahoma,Arial,sans-serif;
     color:var(--white);
+    font-family:Tahoma,Arial,sans-serif;
     overflow-x:hidden;
     background:
         radial-gradient(circle at 10% 10%,rgba(255,0,110,.4),transparent 30%),
@@ -43,9 +42,9 @@ body{
 .background{
     position:fixed;
     inset:0;
-    z-index:0;
-    pointer-events:none;
     overflow:hidden;
+    pointer-events:none;
+    z-index:0;
 }
 
 .glow{
@@ -68,8 +67,8 @@ body{
     width:280px;
     height:280px;
     background:#d90429;
-    bottom:-100px;
     right:-80px;
+    bottom:-100px;
     animation:glow2 10s ease-in-out infinite alternate;
 }
 
@@ -150,14 +149,13 @@ body{
     font-size:clamp(42px,10vw,80px);
     font-weight:900;
     letter-spacing:2px;
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #ff8cc5,
-            #ff006e,
-            #fff
-        );
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ff8cc5,
+        #ff006e,
+        #fff
+    );
     background-size:250% auto;
     -webkit-background-clip:text;
     background-clip:text;
@@ -609,8 +607,6 @@ body{
 </header>
 
 
-<!-- START SCREEN -->
-
 <section id="startScreen" class="screen active">
 
     <div class="glass start-card">
@@ -643,8 +639,6 @@ body{
 
 </section>
 
-
-<!-- QUIZ SCREEN -->
 
 <section id="quizScreen" class="screen">
 
@@ -695,8 +689,6 @@ body{
 
 </section>
 
-
-<!-- RESULT SCREEN -->
 
 <section id="resultScreen" class="screen">
 
@@ -755,329 +747,312 @@ body{
 <script>
 "use strict";
 
-
-/* =========================================
-   QUESTIONS - 24 QUESTIONS
-========================================= */
-
 const questions = [
 
 {
-    q:"سه بازیگر جی ال ببر که دورگه باشن(یعنی بجز رگ تایلندی یک رگ دیگه هم داشته باشن)",
-    options:[
-        "فرین، لینگ‌لینگ، انگفا",
-        "شارلوت، جینا، سونیا",
-        "جینی، لینا، لوکمی",
-        "جینگ‌جینگ، جون، فای"
-    ],
-    answer:1
+q:"سه بازیگر جی ال ببر که دورگه باشن(یعنی بجز رگ تایلندی یک رگ دیگه هم داشته باشن)",
+options:[
+"فرین، لینگ‌لینگ، انگفا",
+"شارلوت، جینا، سونیا",
+"جینی، لینا، لوکمی",
+"جینگ‌جینگ، جون، فای"
+],
+answer:1
 },
 
 {
-    q:"دو بازیگر جی ال نام ببرین که زیر سن 20 سالگی سریال بازی کردن؟؟",
-    options:[
-        "بکی اورم",
-        "شارلوت میو",
-        "پنگجی جینا",
-        "فرین سونیا"
-    ],
-    answer:2
+q:"دو بازیگر جی ال نام ببرین که زیر سن 20 سالگی سریال بازی کردن؟؟",
+options:[
+"بکی اورم",
+"شارلوت میو",
+"پنگجی جینا",
+"فرین سونیا"
+],
+answer:2
 },
 
 {
-    q:"کاپل انگفا شارلوت تا الان  چند تا سریال کاپلی بازی کردن؟؟",
-    options:[
-        "۳ تا",
-        "۴ تا",
-        "۵ تا",
-        "۶ تا"
-    ],
-    answer:2
+q:"کاپل انگفا شارلوت تا الان  چند تا سریال کاپلی بازی کردن؟؟",
+options:[
+"۳ تا",
+"۴ تا",
+"۵ تا",
+"۶ تا"
+],
+answer:2
 },
 
 {
-    q:"دلیل جدایی فای و یوکو چی بود؟؟",
-    options:[
-        "به دلیل اینکه یوکو فای رو ایگنور کرد و از کمپانی بیرون نیومد",
-        "به دلیل پایان قرارداد یوکو",
-        "به دلیل مشکلات مالی کمپانی",
-        "به دلیل تغییر محل سکونت فای"
-    ],
-    answer:0
+q:"دلیل جدایی فای و یوکو چی بود؟؟",
+options:[
+"به دلیل اینکه یوکو فای رو ایگنور کرد و از کمپانی بیرون نیومد",
+"به دلیل پایان قرارداد یوکو",
+"به دلیل مشکلات مالی کمپانی",
+"به دلیل تغییر محل سکونت فای"
+],
+answer:0
 },
 
 {
-    q:"اسم دو کارکتر نقش اصلی سریال گپ رو نام ببر؟؟",
-    options:[
-        "بکی سم",
-        "سم مون",
-        "فرین سم",
-        "مون بکی"
-    ],
-    answer:1
+q:"اسم دو کارکتر نقش اصلی سریال گپ رو نام ببر؟؟",
+options:[
+"بکی سم",
+"سم مون",
+"فرین سم",
+"مون بکی"
+],
+answer:1
 },
 
 {
-    q:"کدوم سریال از کاپل فرین بکی هست که داره تاریخ ساخت عقب میوفته؟؟",
-    options:[
-        "Uranus 2324",
-        "Cranium",
-        "Lunar Secret",
-        "Under her Rules"
-    ],
-    answer:1
+q:"کدوم سریال از کاپل فرین بکی هست که داره تاریخ ساخت عقب میوفته؟؟",
+options:[
+"Uranus 2324",
+"Cranium",
+"Lunar Secret",
+"Under her Rules"
+],
+answer:1
 },
 
 {
-    q:"کدام از بازیگرا ها کمپانی خودشون رو راه اندازی کردن؟؟",
-    options:[
-        "فرین شارلوت",
-        "فای انگفا",
-        "بکی شلی",
-        "فی می"
-    ],
-    answer:3
+q:"کدام از بازیگرا ها کمپانی خودشون رو راه اندازی کردن؟؟",
+options:[
+"فرین شارلوت",
+"فای انگفا",
+"بکی شلی",
+"فی می"
+],
+answer:3
 },
 
 {
-    q:"یک بازیگر جی ال نام ببر که توی میس گرند هم نقش ایفا کرده؟؟",
-    options:[
-        "فای",
-        "لینگ‌لینگ",
-        "انگفا",
-        "فرین"
-    ],
-    answer:2
+q:"یک بازیگر جی ال نام ببر که توی میس گرند هم نقش ایفا کرده؟؟",
+options:[
+"فای",
+"لینگ‌لینگ",
+"انگفا",
+"فرین"
+],
+answer:2
 },
 
 {
-    q:"در حال حاضر کدوم از کاپل جی ال هست که به طور رسمی باهم تو رابطه هستن نام ببر؟؟",
-    options:[
-        "فرین بکی",
-        "نامتان فیلم",
-        "لینگ‌اورم",
-        "انگلوت"
-    ],
-    answer:1
+q:"در حال حاضر کدوم از کاپل جی ال هست که به طور رسمی باهم تو رابطه هستن نام ببر؟؟",
+options:[
+"فرین بکی",
+"نامتان فیلم",
+"لینگ‌اورم",
+"انگلوت"
+],
+answer:1
 },
 
-/* سوال 10 اصلاح شد */
+/* سؤال ۱۰ اصلاح‌شده */
 
 {
-    q:"اسم یه بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
-    options:[
-        "فرین",
-        "میو",
-        "اورم",
-        "میلک"
-    ],
-    answer:0
-},
-
-{
-    q:"یک سریال جی ال رو نام ببرین که بیشترین قسمت رو داشته؟؟",
-    options:[
-        "عشق سمی",
-        "دیناید لاو",
-        "لویال پین",
-        "اونلی یو"
-    ],
-    answer:2
+q:"اسم یه بازیگر جی ال نام ببر که بالای 25 سال سن دارن؟؟",
+options:[
+"فرین",
+"میو",
+"اورم",
+"میلک"
+],
+answer:0
 },
 
 {
-    q:"چند تا بازیگر جی ال نام ببرید که در سریالش سیگار کشیدن؟؟",
-    options:[
-        "نامتان ویو",
-        "امی بونی",
-        "ویو میم",
-        "فیلم بونی"
-    ],
-    answer:0
+q:"یک سریال جی ال رو نام ببرین که بیشترین قسمت رو داشته؟؟",
+options:[
+"عشق سمی",
+"دیناید لاو",
+"لویال پین",
+"اونلی یو"
+],
+answer:2
 },
 
 {
-    q:"کدام کاپل جی‌ال باهم در یک سریال بودن ولی نقش هردو استریت بود؟",
-    options:[
-        "انگلوت",
-        "نامتان‌فیلم",
-        "ویومیم",
-        "فرین‌بکی"
-    ],
-    answer:1
+q:"چند تا بازیگر جی ال نام ببرید که در سریالش سیگار کشیدن؟؟",
+options:[
+"نامتان ویو",
+"امی بونی",
+"ویو میم",
+"فیلم بونی"
+],
+answer:0
 },
 
 {
-    q:"در کدام سریال شخصیت اصلی سه تا دختر بوسید؟",
-    options:[
-        "Pluto",
-        "Roller Coaster",
-        "Shades",
-        "Girls Rules"
-    ],
-    answer:3
+q:"کدام کاپل جی‌ال باهم در یک سریال بودن ولی نقش هردو استریت بود؟",
+options:[
+"انگلوت",
+"نامتان‌فیلم",
+"ویومیم",
+"فرین‌بکی"
+],
+answer:1
 },
 
 {
-    q:"در کدام سریال شخصیت فرعی کیس بیشتری داره با شخصیت اصلی تا خود کاپل سریال؟",
-    options:[
-        "Girls Rules",
-        "Shades",
-        "Moonshadow",
-        "Pluto"
-    ],
-    answer:2
+q:"در کدام سریال شخصیت اصلی سه تا دختر بوسید؟",
+options:[
+"Pluto",
+"Roller Coaster",
+"Shades",
+"Girls Rules"
+],
+answer:3
 },
 
 {
-    q:"در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
-    options:[
-        "جینا بکی",
-        "جینی میو",
-        "لوکمی امی",
-        "لینگ‌لینگ انگفا"
-    ],
-    answer:2
+q:"در کدام سریال شخصیت فرعی کیس بیشتری داره با شخصیت اصلی تا خود کاپل سریال؟",
+options:[
+"Girls Rules",
+"Shades",
+"Moonshadow",
+"Pluto"
+],
+answer:2
 },
 
 {
-    q:"کدوم سریال جی ال مثلث عشقی خانوادگی داشت؟",
-    options:[
-        "Roller Coaster",
-        "Pluto",
-        "The Water",
-        "The Loyal Pin"
-    ],
-    answer:1
+q:"در سریال های جی ال تایلندی چند شخصیت پزشک  داشتیم نام ببر؟؟",
+options:[
+"جینا بکی",
+"جینی میو",
+"لوکمی امی",
+"لینگ‌لینگ انگفا"
+],
+answer:2
 },
 
 {
-    q:"در کدام سریال جی ال داشتیم یه تریسام می‌گرفتیم؟",
-    options:[
-        "Enemies with Benefits",
-        "Moonshadow",
-        "Pluto",
-        "Girl Rules"
-    ],
-    answer:2
+q:"کدوم سریال جی ال مثلث عشقی خانوادگی داشت؟",
+options:[
+"Roller Coaster",
+"Pluto",
+"The Water",
+"The Loyal Pin"
+],
+answer:1
 },
 
 {
-    q:"کدوم کاپل جی ال تایلندی در واقعیت از هم جدا شدن؟؟",
-    options:[
-        "اینجوی جون، فی می، کاپوک سایزی",
-        "میو رنه، تان‌یادا، میلک لاو",
-        "میونیچ جون، تان یادا، اینجوی‌جون",
-        "میو رنه، اینجوی‌جون، شلی‌پاندائو"
-    ],
-    answer:2
-},
-
-/*
-   سؤال تکراری 20 حذف شد.
-   سؤال پزشک فقط یک بار وجود دارد.
-*/
-
-{
-    q:"لاو و میلک از هم جدا شدن (بله یا خیر)",
-    options:[
-        "بله",
-        "خیر"
-    ],
-    answer:1
+q:"در کدام سریال جی ال داشتیم یه تریسام می‌گرفتیم؟",
+options:[
+"Enemies with Benefits",
+"Moonshadow",
+"Pluto",
+"Girl Rules"
+],
+answer:2
 },
 
 {
-    q:"کمپانی جی ام ام فقط کاپل پسر بی ال داره (بله یا خیر)",
-    options:[
-        "بله",
-        "خیر"
-    ],
-    answer:1
+q:"کدوم کاپل جی ال تایلندی در واقعیت از هم جدا شدن؟؟",
+options:[
+"اینجوی جون، فی می، کاپوک سایزی",
+"میو رنه، تان‌یادا، میلک لاو",
+"میونیچ جون، تان یادا، اینجوی‌جون",
+"میو رنه، اینجوی‌جون، شلی‌پاندائو"
+],
+answer:2
 },
 
 {
-    q:"پی تیک رئیس کمپانی نورث استاره( بله یا خیر)",
-    options:[
-        "بله",
-        "خیر"
-    ],
-    answer:0
+q:"لاو و میلک از هم جدا شدن (بله یا خیر)",
+options:[
+"بله",
+"خیر"
+],
+answer:1
 },
 
 {
-    q:"فرین با شارلوت کاپل  کاری هستن(بله یا خیر)",
-    options:[
-        "بله",
-        "خیر"
-    ],
-    answer:1
+q:"کمپانی جی ام ام فقط کاپل پسر بی ال داره (بله یا خیر)",
+options:[
+"بله",
+"خیر"
+],
+answer:1
 },
 
 {
-    q:"اولین سریال جی ال تایلند پلاتو بود(بله یا خیر",
-    options:[
-        "بله",
-        "خیر"
-    ],
-    answer:1
+q:"پی تیک رئیس کمپانی نورث استاره( بله یا خیر)",
+options:[
+"بله",
+"خیر"
+],
+answer:0
+},
+
+{
+q:"فرین با شارلوت کاپل  کاری هستن(بله یا خیر)",
+options:[
+"بله",
+"خیر"
+],
+answer:1
+},
+
+{
+q:"اولین سریال جی ال تایلند پلاتو بود(بله یا خیر",
+options:[
+"بله",
+"خیر"
+],
+answer:1
 }
+
 ];
 
 
-/* =========================================
-   ELEMENTS
-========================================= */
-
 const startScreen =
-    document.getElementById("startScreen");
+document.getElementById("startScreen");
 
 const quizScreen =
-    document.getElementById("quizScreen");
+document.getElementById("quizScreen");
 
 const resultScreen =
-    document.getElementById("resultScreen");
+document.getElementById("resultScreen");
 
 const nameInput =
-    document.getElementById("nameInput");
+document.getElementById("nameInput");
 
 const startBtn =
-    document.getElementById("startBtn");
+document.getElementById("startBtn");
 
 const questionNumber =
-    document.getElementById("questionNumber");
+document.getElementById("questionNumber");
 
 const questionElement =
-    document.getElementById("question");
+document.getElementById("question");
 
 const optionsElement =
-    document.getElementById("options");
+document.getElementById("options");
 
 const nextBtn =
-    document.getElementById("nextBtn");
+document.getElementById("nextBtn");
 
 const progress =
-    document.getElementById("progress");
+document.getElementById("progress");
 
 const resultName =
-    document.getElementById("resultName");
+document.getElementById("resultName");
 
 const scoreElement =
-    document.getElementById("score");
+document.getElementById("score");
 
 const perfectElement =
-    document.getElementById("perfect");
+document.getElementById("perfect");
 
-
-/* =========================================
-   STORAGE
-========================================= */
 
 const FINISHED_KEY =
-    "gl_graphy_exam_finished_v2";
+"gl_graphy_exam_finished_v3";
 
 const SESSION_KEY =
-    "gl_graphy_exam_session_v2";
+"gl_graphy_exam_session_v3";
 
 
 let currentQuestion = 0;
@@ -1086,674 +1061,602 @@ let userAnswers = [];
 let userName = "";
 
 
-/* =========================================
-   NAME
-========================================= */
-
 function sanitizeName(value){
 
-    return String(value)
-        .replace(/[\u0000-\u001F\u007F]/g,"")
-        .trim()
-        .slice(0,40);
+return String(value)
+.replace(/[\u0000-\u001F\u007F]/g,"")
+.trim()
+.slice(0,40);
 
 }
 
-
-/* =========================================
-   SCREEN
-========================================= */
 
 function showScreen(screen){
 
-    startScreen.classList.remove("active");
-    quizScreen.classList.remove("active");
-    resultScreen.classList.remove("active");
+startScreen.classList.remove("active");
+quizScreen.classList.remove("active");
+resultScreen.classList.remove("active");
 
-    screen.classList.add("active");
+screen.classList.add("active");
 
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
 }
 
 
-/* =========================================
-   TEMP SESSION
-========================================= */
-
 function saveSession(){
 
-    try{
+try{
 
-        sessionStorage.setItem(
-            SESSION_KEY,
-            JSON.stringify({
-                name:userName,
-                currentQuestion:currentQuestion,
-                answers:userAnswers
-            })
-        );
+sessionStorage.setItem(
+SESSION_KEY,
+JSON.stringify({
+name:userName,
+currentQuestion:currentQuestion,
+answers:userAnswers
+})
+);
 
-    }catch(error){}
+}catch(error){}
 
 }
 
 
 function clearSession(){
 
-    try{
-        sessionStorage.removeItem(SESSION_KEY);
-    }catch(error){}
+try{
+sessionStorage.removeItem(SESSION_KEY);
+}catch(error){}
 
 }
 
 
-/* =========================================
-   FINAL RESULT
-========================================= */
-
 function saveFinishedResult(score){
 
-    try{
+try{
 
-        localStorage.setItem(
-            FINISHED_KEY,
-            JSON.stringify({
-                finished:true,
-                name:userName,
-                score:score
-            })
-        );
+localStorage.setItem(
+FINISHED_KEY,
+JSON.stringify({
+finished:true,
+name:userName,
+score:score
+})
+);
 
-    }catch(error){}
+}catch(error){}
 
 }
 
 
 function getFinishedResult(){
 
-    try{
+try{
 
-        const saved =
-            localStorage.getItem(FINISHED_KEY);
+const saved =
+localStorage.getItem(FINISHED_KEY);
 
-        if(!saved){
-            return null;
-        }
-
-        const data =
-            JSON.parse(saved);
-
-        if(
-            data &&
-            data.finished === true &&
-            typeof data.name === "string" &&
-            typeof data.score === "number"
-        ){
-
-            return data;
-
-        }
-
-    }catch(error){}
-
-    return null;
+if(!saved){
+return null;
 }
 
+const data =
+JSON.parse(saved);
 
-/* =========================================
-   RENDER
-========================================= */
+if(
+data &&
+data.finished === true &&
+typeof data.name === "string" &&
+typeof data.score === "number"
+){
+
+return data;
+
+}
+
+}catch(error){}
+
+return null;
+
+}
+
 
 function renderQuestion(){
 
-    const item =
-        questions[currentQuestion];
+const item =
+questions[currentQuestion];
 
-    selectedAnswer =
-        userAnswers[currentQuestion] !== undefined
-            ? userAnswers[currentQuestion]
-            : null;
-
-
-    questionNumber.textContent =
-        "Question " +
-        (currentQuestion + 1) +
-        " / " +
-        questions.length;
+selectedAnswer =
+userAnswers[currentQuestion] !== undefined
+? userAnswers[currentQuestion]
+: null;
 
 
-    questionElement.textContent =
-        item.q;
+questionNumber.textContent =
+"Question " +
+(currentQuestion + 1) +
+" / " +
+questions.length;
 
 
-    optionsElement.innerHTML = "";
+questionElement.textContent =
+item.q;
 
 
-    item.options.forEach(
-        function(text,index){
-
-            const button =
-                document.createElement("button");
-
-            button.type = "button";
-
-            button.className = "option";
-
-            button.textContent = text;
+optionsElement.innerHTML = "";
 
 
-            if(
-                selectedAnswer !== null &&
-                selectedAnswer === index
-            ){
+item.options.forEach(
+function(text,index){
 
-                button.classList.add("selected");
+const button =
+document.createElement("button");
 
-            }
-
-
-            button.addEventListener(
-                "click",
-                function(){
-
-                    selectOption(index);
-
-                }
-            );
+button.type = "button";
+button.className = "option";
+button.textContent = text;
 
 
-            optionsElement.appendChild(button);
+if(
+selectedAnswer !== null &&
+selectedAnswer === index
+){
 
-        }
-    );
-
-
-    progress.style.width =
-        (
-            ((currentQuestion + 1) /
-            questions.length) * 100
-        ) + "%";
-
-
-    nextBtn.disabled =
-        selectedAnswer === null;
-
-
-    if(
-        currentQuestion ===
-        questions.length - 1
-    ){
-
-        nextBtn.textContent =
-            "پایان آزمون 🏆";
-
-    }else{
-
-        nextBtn.textContent =
-            "بعدی →";
-
-    }
+button.classList.add("selected");
 
 }
 
 
-/* =========================================
-   SELECT
-========================================= */
+button.addEventListener(
+"click",
+function(){
+
+selectOption(index);
+
+}
+);
+
+
+optionsElement.appendChild(button);
+
+}
+);
+
+
+progress.style.width =
+(
+((currentQuestion + 1) /
+questions.length) * 100
+) + "%";
+
+
+nextBtn.disabled =
+selectedAnswer === null;
+
+
+if(
+currentQuestion ===
+questions.length - 1
+){
+
+nextBtn.textContent =
+"پایان آزمون 🏆";
+
+}else{
+
+nextBtn.textContent =
+"بعدی →";
+
+}
+
+}
+
 
 function selectOption(index){
 
-    selectedAnswer = index;
+selectedAnswer = index;
 
-    userAnswers[currentQuestion] =
-        index;
-
-
-    const buttons =
-        optionsElement.querySelectorAll(".option");
+userAnswers[currentQuestion] =
+index;
 
 
-    buttons.forEach(
-        function(button,i){
-
-            button.classList.toggle(
-                "selected",
-                i === index
-            );
-
-        }
-    );
+const buttons =
+optionsElement.querySelectorAll(".option");
 
 
-    nextBtn.disabled = false;
+buttons.forEach(
+function(button,i){
 
-    saveSession();
+button.classList.toggle(
+"selected",
+i === index
+);
+
+}
+);
+
+
+nextBtn.disabled = false;
+
+saveSession();
 
 }
 
-
-/* =========================================
-   SCORE
-========================================= */
 
 function calculateScore(){
 
-    let correctCount = 0;
+let correctCount = 0;
 
 
-    for(
-        let i=0;
-        i<questions.length;
-        i++
-    ){
+for(
+let i=0;
+i<questions.length;
+i++
+){
 
-        if(
-            userAnswers[i] ===
-            questions[i].answer
-        ){
+if(
+userAnswers[i] ===
+questions[i].answer
+){
 
-            correctCount++;
+correctCount++;
 
-        }
-
-    }
-
-
-    let percentage =
-        Math.round(
-            (correctCount /
-            questions.length) * 100
-        );
-
-
-    if(percentage < 10){
-        percentage = 10;
-    }
-
-
-    if(percentage > 100){
-        percentage = 100;
-    }
-
-
-    return {
-        correct:correctCount,
-        percentage:percentage
-    };
+}
 
 }
 
 
-/* =========================================
-   PERFECT
-========================================= */
+let percentage =
+Math.round(
+(correctCount /
+questions.length) * 100
+);
+
+
+if(percentage < 10){
+percentage = 10;
+}
+
+if(percentage > 100){
+percentage = 100;
+}
+
+
+return {
+correct:correctCount,
+percentage:percentage
+};
+
+}
+
 
 function createPerfectParticles(){
 
-    const symbols = [
-        "💗",
-        "💖",
-        "💕",
-        "✨",
-        "👑"
-    ];
+const symbols = [
+"💗",
+"💖",
+"💕",
+"✨",
+"👑"
+];
 
 
-    for(let i=0;i<28;i++){
+for(let i=0;i<28;i++){
 
-        const particle =
-            document.createElement("div");
+const particle =
+document.createElement("div");
 
-        particle.className =
-            "perfect-particle";
+particle.className =
+"perfect-particle";
 
-        particle.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
+particle.textContent =
+symbols[
+Math.floor(
+Math.random() *
+symbols.length
+)
+];
 
-        particle.style.left =
-            Math.random() * 100 + "vw";
+particle.style.left =
+Math.random() * 100 + "vw";
 
-        particle.style.fontSize =
-            (14 + Math.random() * 20) + "px";
+particle.style.fontSize =
+(14 + Math.random() * 20) + "px";
 
-        particle.style.animationDuration =
-            (2 + Math.random() * 3) + "s";
-
-
-        document.body.appendChild(
-            particle
-        );
+particle.style.animationDuration =
+(2 + Math.random() * 3) + "s";
 
 
-        setTimeout(
-            function(){
-                particle.remove();
-            },
-            5500
-        );
+document.body.appendChild(
+particle
+);
 
-    }
+
+setTimeout(
+function(){
+particle.remove();
+},
+5500
+);
 
 }
 
+}
 
-/* =========================================
-   FINISH
-========================================= */
 
 function finishQuiz(){
 
-    const result =
-        calculateScore();
+const result =
+calculateScore();
 
 
-    resultName.textContent =
-        userName;
+resultName.textContent =
+userName;
 
 
-    scoreElement.textContent =
-        result.percentage + "%";
+scoreElement.textContent =
+result.percentage + "%";
 
 
-    if(
-        result.correct ===
-        questions.length
-    ){
+if(
+result.correct ===
+questions.length
+){
 
-        perfectElement.classList.add("show");
+perfectElement.classList.add("show");
 
-        createPerfectParticles();
+createPerfectParticles();
 
-    }else{
+}else{
 
-        perfectElement.classList.remove("show");
-
-    }
-
-
-    saveFinishedResult(
-        result.percentage
-    );
-
-
-    clearSession();
-
-
-    showScreen(resultScreen);
+perfectElement.classList.remove("show");
 
 }
 
 
-/* =========================================
-   SHOW SAVED RESULT
-========================================= */
+saveFinishedResult(
+result.percentage
+);
+
+clearSession();
+
+showScreen(resultScreen);
+
+}
+
 
 function showSavedResult(data){
 
-    userName =
-        sanitizeName(data.name);
+userName =
+sanitizeName(data.name);
+
+resultName.textContent =
+userName;
+
+scoreElement.textContent =
+data.score + "%";
 
 
-    resultName.textContent =
-        userName;
+if(Number(data.score) === 100){
 
+perfectElement.classList.add("show");
 
-    scoreElement.textContent =
-        data.score + "%";
+}else{
 
-
-    if(Number(data.score) === 100){
-
-        perfectElement.classList.add("show");
-
-    }else{
-
-        perfectElement.classList.remove("show");
-
-    }
-
-
-    showScreen(resultScreen);
+perfectElement.classList.remove("show");
 
 }
 
 
-/* =========================================
-   START
-========================================= */
+showScreen(resultScreen);
+
+}
+
 
 startBtn.addEventListener(
-    "click",
-    function(){
+"click",
+function(){
 
-        const finished =
-            getFinishedResult();
-
-
-        if(finished){
-
-            showSavedResult(finished);
-
-            return;
-
-        }
+const finished =
+getFinishedResult();
 
 
-        userName =
-            sanitizeName(
-                nameInput.value
-            );
+if(finished){
+
+showSavedResult(finished);
+
+return;
+
+}
 
 
-        if(!userName){
-
-            nameInput.focus();
-
-            nameInput.style.borderColor =
-                "#ff167f";
-
-
-            setTimeout(
-                function(){
-
-                    nameInput.style.borderColor =
-                        "";
-
-                },
-                800
-            );
-
-            return;
-
-        }
-
-
-        currentQuestion = 0;
-
-        selectedAnswer = null;
-
-        userAnswers = [];
-
-
-        saveSession();
-
-        showScreen(quizScreen);
-
-        renderQuestion();
-
-    }
+userName =
+sanitizeName(
+nameInput.value
 );
 
 
-/* =========================================
-   ENTER
-========================================= */
+if(!userName){
+
+nameInput.focus();
+
+nameInput.style.borderColor =
+"#ff167f";
+
+setTimeout(
+function(){
+
+nameInput.style.borderColor =
+"";
+
+},
+800
+);
+
+return;
+
+}
+
+
+currentQuestion = 0;
+selectedAnswer = null;
+userAnswers = [];
+
+saveSession();
+
+showScreen(quizScreen);
+
+renderQuestion();
+
+}
+);
+
 
 nameInput.addEventListener(
-    "keydown",
-    function(event){
+"keydown",
+function(event){
 
-        if(event.key === "Enter"){
+if(event.key === "Enter"){
 
-            startBtn.click();
+startBtn.click();
 
-        }
+}
 
-    }
+}
 );
 
-
-/* =========================================
-   NEXT
-========================================= */
 
 nextBtn.addEventListener(
-    "click",
-    function(){
+"click",
+function(){
 
-        if(selectedAnswer === null){
-            return;
-        }
-
-
-        if(
-            currentQuestion <
-            questions.length - 1
-        ){
-
-            currentQuestion++;
-
-            selectedAnswer =
-                userAnswers[currentQuestion] !== undefined
-                    ? userAnswers[currentQuestion]
-                    : null;
+if(selectedAnswer === null){
+return;
+}
 
 
-            saveSession();
+if(
+currentQuestion <
+questions.length - 1
+){
 
-            renderQuestion();
+currentQuestion++;
 
-        }else{
+selectedAnswer =
+userAnswers[currentQuestion] !== undefined
+? userAnswers[currentQuestion]
+: null;
 
-            finishQuiz();
+saveSession();
 
-        }
+renderQuestion();
 
-    }
+}else{
+
+finishQuiz();
+
+}
+
+}
 );
 
-
-/* =========================================
-   RESTORE
-========================================= */
 
 function restoreState(){
 
-    const finished =
-        getFinishedResult();
+const finished =
+getFinishedResult();
 
 
-    if(finished){
+if(finished){
 
-        showSavedResult(finished);
+showSavedResult(finished);
 
-        return;
-
-    }
-
-
-    try{
-
-        const saved =
-            sessionStorage.getItem(
-                SESSION_KEY
-            );
-
-
-        if(!saved){
-            return;
-        }
-
-
-        const data =
-            JSON.parse(saved);
-
-
-        if(
-            !data ||
-            typeof data.name !== "string" ||
-            !Array.isArray(data.answers)
-        ){
-
-            return;
-
-        }
-
-
-        userName =
-            sanitizeName(data.name);
-
-
-        currentQuestion =
-            Number(data.currentQuestion);
-
-
-        if(
-            !Number.isInteger(
-                currentQuestion
-            )
-        ){
-
-            currentQuestion = 0;
-
-        }
-
-
-        if(currentQuestion < 0){
-            currentQuestion = 0;
-        }
-
-
-        if(
-            currentQuestion >=
-            questions.length
-        ){
-
-            currentQuestion =
-                questions.length - 1;
-
-        }
-
-
-        userAnswers =
-            data.answers;
-
-
-        showScreen(quizScreen);
-
-        renderQuestion();
-
-
-    }catch(error){
-
-        clearSession();
-
-    }
+return;
 
 }
 
 
-/* =========================================
-   INIT
-========================================= */
+try{
+
+const saved =
+sessionStorage.getItem(
+SESSION_KEY
+);
+
+
+if(!saved){
+return;
+}
+
+
+const data =
+JSON.parse(saved);
+
+
+if(
+!data ||
+typeof data.name !== "string" ||
+!Array.isArray(data.answers)
+){
+
+return;
+
+}
+
+
+userName =
+sanitizeName(data.name);
+
+
+currentQuestion =
+Number(data.currentQuestion);
+
+
+if(
+!Number.isInteger(currentQuestion)
+){
+
+currentQuestion = 0;
+
+}
+
+
+if(currentQuestion < 0){
+currentQuestion = 0;
+}
+
+
+if(
+currentQuestion >=
+questions.length
+){
+
+currentQuestion =
+questions.length - 1;
+
+}
+
+
+userAnswers =
+data.answers;
+
+
+showScreen(quizScreen);
+
+renderQuestion();
+
+
+}catch(error){
+
+clearSession();
+
+}
+
+}
+
 
 restoreState();
 
